@@ -1,7 +1,6 @@
 import "./App.scss";
 import "./index.scss";
 import "./scss/Colors.scss";
-import Button from "./components/button/Button";
 import Footer from "./sections/footer/Footer";
 import GetStarted from "./sections/get-started-section/GetStarted";
 import Header from "./sections/hero-section/Header";
@@ -14,7 +13,6 @@ import WhyUse from "./sections/why-use-section/WhyUse";
 function App() {
   return (
     <div className="App">
-      <Button bgColorClass="primary" buttonText="Get Demo" />
       <Header />
       <HeroSection />
       <WhyUse />
