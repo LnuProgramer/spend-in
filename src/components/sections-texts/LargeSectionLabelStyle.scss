@@ -1,0 +1,22 @@
+@import "../../scss/Colors";
+
+@mixin text-color($color) {
+  color: $color;
+}
+
+.large-section-label {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 60px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  color: #ffffff;
+
+  &.white {
+    @include text-color(#ffffff);
+  }
+
+  &.black {
+    @include text-color($secondinary-dark-900);
+  }
+}
