@@ -1,15 +1,14 @@
-@import "../../scss/Colors";
+@import "../../Colors";
 
 @mixin text-color($color) {
   color: $color;
 }
 
-.large-section-label {
+.large-text {
   font-size: 40px;
   font-weight: 700;
   line-height: 60px;
   letter-spacing: -0.03em;
-  text-align: left;
   color: #ffffff;
 
   &.white {
