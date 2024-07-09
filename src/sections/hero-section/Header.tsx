@@ -6,7 +6,7 @@ function Header() {
   return (
     <header>
       <div className="header-divs" id="header-div-left">
-        <img src="images/vector/logo.svg" id="logo" alt="logo" />
+        <img src="images/vector/header/logo.svg" id="logo" alt="logo" />
         <h1 id="product-name">Spend.In</h1>
       </div>
       <div className="header-divs" id="header-div-center">

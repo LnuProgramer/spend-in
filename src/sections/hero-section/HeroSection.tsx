@@ -39,7 +39,7 @@ expenses in one place."
         </div>
       </div>
       <img
-        src="images/raster/spend-inApp.png"
+        src="images/raster/hero/spend-inApp.png"
         id="spend-in-img"
         alt="Spend.in App"
       ></img>
