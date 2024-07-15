@@ -5,10 +5,11 @@ import Elipces from "./Elipces";
 import LargeText from "../../components/sections-texts/LargeText";
 import SmallText from "../../components/sections-texts/SmallText";
 import Button from "../../components/button/Button";
+import SectionBg from "./../../components/sections-bg/SectionBg";
 
 function HeroSection() {
   return (
-    <div className="hero-section">
+    <SectionBg bgColor="dark" padding={0}>
       <Header />
       <Elipces />
       <div id="hero-section-text-container">
@@ -43,7 +44,7 @@ expenses in one place."
         id="spend-in-img"
         alt="Spend.in App"
       ></img>
-    </div>
+    </SectionBg>
   );
 }
 

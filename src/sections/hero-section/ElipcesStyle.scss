@@ -1,45 +1,17 @@
 @import "../../Colors";
-$elipce-size: 46.5vw;
 
-.elipce-with-border,
-.elipce-without-border {
+.elipce {
   position: absolute;
-  width: $elipce-size;
-  height: $elipce-size;
-  border: 6.94vw solid #ffffff;
-  opacity: 0.05;
-  border-radius: 100%;
+  width: 31.7361vw;
   pointer-events: none;
 }
 
-.elipce-without-border {
-  width: $elipce-size + 13vw;
-  height: $elipce-size + 13vw;
-  border: 1px solid;
-  background: radial-gradient(
-    circle closest-side,
-    #ffffff 0%,
-    $secondinary-dark-700 100%
-  );
-  opacity: 0.075;
+#elipce-top-right {
+  top: 0;
+  right: 0;
 }
 
-#elipce-with-border-top-right {
-  top: 0 - calc($elipce-size / 1.6);
-  right: 0 - calc($elipce-size / 1.6);
-}
-
-#elipce-with-border-bottom-left {
-  bottom: 0 - calc($elipce-size / 1.6);
-  left: 0 - calc($elipce-size / 1.6);
-}
-
-#elipce-withot-border-top-left {
-  top: 0 - calc($elipce-size / 1.6);
-  left: 0 - calc($elipce-size / 2);
-}
-
-#elipce-withot-border-bottom-right {
-  bottom: 0 - calc($elipce-size / 1.6);
-  right: 0 - calc($elipce-size / 1.6);
+#elipce-bottom-left {
+  bottom: 0;
+  left: 0;
 }

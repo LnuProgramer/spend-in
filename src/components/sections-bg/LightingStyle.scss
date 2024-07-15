@@ -1,0 +1,18 @@
+@import "../../Colors";
+
+.lighting {
+  position: absolute;
+  pointer-events: none;
+}
+
+#lighting-top-left {
+  width: 44.6527vw;
+  top: 0;
+  left: 0;
+}
+
+#lighting-bottom-right {
+  width: 47.5vw;
+  bottom: 0;
+  right: 0;
+}
