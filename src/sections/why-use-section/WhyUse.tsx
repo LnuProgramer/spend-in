@@ -1,6 +1,6 @@
 import React from "react";
-import WhyUseSection1 from "./WhyUseSection1";
-import WhyUseSection2 from "./WhyUseSection2";
+import WhyUseSection1 from "./why-use-section-1/WhyUseSection1";
+import WhyUseSection2 from "./why-use-section-2/WhyUseSection2";
 
 function WhyUse() {
   return (

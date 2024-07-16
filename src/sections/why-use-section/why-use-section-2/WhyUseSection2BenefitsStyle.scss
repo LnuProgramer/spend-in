@@ -1,0 +1,18 @@
+.why-use-section-2-benefits-wrapper-blocks {
+  display: flex;
+  align-items: start;
+  gap: 32px;
+  height: fit-content;
+  width: fit-content;
+}
+
+.benefit-icon {
+  width: 50px;
+}
+
+.why-use-section-2-benefits-text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 420px;
+}
