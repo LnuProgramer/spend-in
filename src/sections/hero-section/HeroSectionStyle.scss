@@ -1,6 +1,6 @@
 @import "../../Colors";
 
-#hero-section-text-container {
+#hero-section-text-wrapper {
   width: 748px;
   height: fit-content;
   text-align: center;
@@ -8,14 +8,14 @@
   margin-top: 7.82vw;
 }
 
-#hero-section-small-text-container {
+#hero-section-small-text-wrapper {
   width: fit-content;
   height: fit-content;
   margin: 0 auto;
   margin-top: 24px;
 }
 
-#hero-section-button-container {
+#hero-section-button-wrapper {
   display: flex;
   width: fit-content;
   height: fit-content;

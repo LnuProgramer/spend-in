@@ -1,19 +1,14 @@
 import React from "react";
 import "./SmallTextStyle.scss";
 
-type SectionDescriptionprops = {
+type SmallTextProps = {
   text: string;
   textColor: string;
   fontSize: number;
   lineHeight: number;
 };
 
-function SmallText({
-  text,
-  textColor,
-  fontSize,
-  lineHeight,
-}: SectionDescriptionprops) {
+function SmallText({ text, textColor, fontSize, lineHeight }: SmallTextProps) {
   return (
     <p
       className={`small-text ${textColor}`}

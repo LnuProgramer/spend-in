@@ -9,18 +9,18 @@ import SectionBg from "./../../components/sections-bg/SectionBg";
 
 function HeroSection() {
   return (
-    <SectionBg bgColor="dark" padding={0}>
+    <SectionBg bgColor="dark" paddingVw={0}>
       <Header />
       <Elipces />
-      <div id="hero-section-text-container">
+      <div id="hero-section-text-wrapper">
         <LargeText
           text="All your business
-expenses in one place."
+          expenses in one place."
           textColor="white"
           fontSize={72}
           lineHeight={108}
         />
-        <div id="hero-section-small-text-container">
+        <div id="hero-section-small-text-wrapper">
           <SmallText
             text="Your one-stop finance empower platform."
             textColor="onBlackBg"
@@ -34,7 +34,7 @@ expenses in one place."
             lineHeight={36}
           />
         </div>
-        <div id="hero-section-button-container">
+        <div id="hero-section-button-wrapper">
           <Button buttonText="Get a Free Demo" buttonColor="primary" />
           <Button buttonText="See Pricing" buttonColor="secondinary" />
         </div>

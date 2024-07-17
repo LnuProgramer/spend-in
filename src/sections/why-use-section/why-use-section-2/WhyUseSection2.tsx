@@ -8,8 +8,7 @@ import WhyUseSection2Benefits from "./WhyUseSection2Benefits";
 
 function WhyUseSection2() {
   return (
-    <SectionBg bgColor="white" padding={8.33}>
-      {" "}
+    <SectionBg bgColor="white" paddingVw={8.33}>
       <div id="why-use-section-2-text-wrapper">
         <MediumText
           text="WHY USE SPEND.IN"
@@ -29,7 +28,7 @@ function WhyUseSection2() {
           <div id="why-use-section-2-small-text-wrapper">
             <SmallText
               text="Our platform helps your business in managing expenses.
-         These are some of the reasons why you should use our platform in managing business finances."
+              These are some of the reasons why you should use our platform in managing business finances."
               textColor="onWhiteBg"
               fontSize={20}
               lineHeight={30}

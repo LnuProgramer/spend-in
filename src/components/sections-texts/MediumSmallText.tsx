@@ -1,27 +1,27 @@
 import React from "react";
-import "./MediumTextStyle.scss";
+import "./MediumSmallTextStyle.scss";
 
-type MediumTextProps = {
+type MediumSmallTextProps = {
   text: string;
   textColor: string;
   fontSize: number;
   lineHeight: number;
 };
 
-function MediumText({
+function MediumSmallText({
   text,
   textColor,
   fontSize,
   lineHeight,
-}: MediumTextProps) {
+}: MediumSmallTextProps) {
   return (
-    <h2
-      className={`medium-text ${textColor}`}
+    <h3
+      className={`medium-small-text ${textColor}`}
       style={{ fontSize: `${fontSize}px`, lineHeight: `${lineHeight}px` }}
     >
       {text}
-    </h2>
+    </h3>
   );
 }
 
-export default MediumText;
+export default MediumSmallText;

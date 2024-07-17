@@ -1,0 +1,19 @@
+@import "../../Colors";
+
+@mixin text-color($color) {
+  color: $color;
+}
+
+.medium-small-text {
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: $secondinary-dark-700;
+
+  &.white {
+    @include text-color(#ffffff);
+  }
+
+  &.black {
+    @include text-color($secondinary-dark-700);
+  }
+}

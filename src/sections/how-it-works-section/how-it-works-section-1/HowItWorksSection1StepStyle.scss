@@ -1,0 +1,30 @@
+@import "../../../Colors";
+
+.how-it-works-section-1-step-block-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  width: 200px;
+}
+
+.how-it-works-section-1-step-img {
+  width: 200px;
+  border-radius: 16px;
+}
+
+.how-it-works-section-1-step-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border: 6px solid $secondinary-dark-700;
+  border-radius: 100%;
+  position: absolute;
+  top: -25px;
+  left: -25px;
+  background-color: $primary-default-500;
+}

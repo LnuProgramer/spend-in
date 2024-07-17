@@ -1,18 +1,13 @@
 import React from "react";
 import "./LargeTextStyle.scss";
 
-type LargeSectionsLabelprops = {
+type LargeTextProps = {
   text: string;
   textColor: string;
   fontSize: number;
   lineHeight: number;
 };
-function LargeText({
-  text,
-  textColor,
-  fontSize,
-  lineHeight,
-}: LargeSectionsLabelprops) {
+function LargeText({ text, textColor, fontSize, lineHeight }: LargeTextProps) {
   return (
     <h1
       className={`large-text ${textColor}`}

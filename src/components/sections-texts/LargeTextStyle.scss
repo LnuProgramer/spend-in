@@ -5,11 +5,9 @@
 }
 
 .large-text {
-  font-size: 40px;
   font-weight: 700;
-  line-height: 60px;
   letter-spacing: -0.03em;
-  color: #ffffff;
+  color: $secondinary-dark-900;
 
   &.white {
     @include text-color(#ffffff);

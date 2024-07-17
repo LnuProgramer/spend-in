@@ -5,14 +5,14 @@ import Lighting from "./Lighting";
 type SectionBgProps = {
   children?: ReactNode;
   bgColor: string;
-  padding: number;
+  paddingVw: number;
 };
 
-function SectionBg({ bgColor, padding, children }: SectionBgProps) {
+function SectionBg({ bgColor, paddingVw, children }: SectionBgProps) {
   return (
     <div
       className={`section-bg ${bgColor}`}
-      style={{ padding: `${padding}vw` }}
+      style={{ padding: `${paddingVw}vw` }}
     >
       {bgColor === "dark" && <Lighting />}
       {children}
