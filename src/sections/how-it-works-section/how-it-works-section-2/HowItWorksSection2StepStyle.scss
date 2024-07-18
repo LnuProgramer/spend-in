@@ -1,0 +1,30 @@
+@import "../../../Colors";
+
+@mixin circleBg-color($bg-color) {
+  background-color: $bg-color;
+}
+
+.how-it-works-section-2-step-block-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.how-it-works-section-2-step-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background-color: $primary-default-500;
+
+  &.primary {
+    @include circleBg-color($primary-default-500);
+  }
+
+  &.white {
+    @include circleBg-color(#ffffff);
+  }
+}

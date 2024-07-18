@@ -17,6 +17,10 @@
     @include text-color($secondinary-dark-900);
   }
 
+  &.secondinary {
+    @include text-color($secondinary-default-500);
+  }
+
   &.white {
     @include text-color(#ffffff);
   }

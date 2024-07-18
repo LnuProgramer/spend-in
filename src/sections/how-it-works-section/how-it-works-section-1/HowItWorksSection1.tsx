@@ -10,15 +10,15 @@ import Button from "../../../components/button/Button";
 function HowItWorksSection1() {
   return (
     <SectionBg bgColor="dark" paddingVw={8.33}>
-      <div id="how-it-works-section-2-text-wrapper">
+      <div id="how-it-works-section-1-text-wrapper">
         <MediumText
           text="HOW IT WORKS"
           textColor="primary"
           fontSize={20}
           lineHeight={30}
         />
-        <div id="how-it-works-section-2-small-and-large-text-wrapper">
-          <div id="how-it-works-section-2-large-text-wrapper">
+        <div id="how-it-works-section-1-small-and-large-text-wrapper">
+          <div id="how-it-works-section-1-large-text-wrapper">
             <LargeText
               text="Few Easy Steps and Done"
               textColor="white"
@@ -26,7 +26,7 @@ function HowItWorksSection1() {
               lineHeight={60}
             />
           </div>
-          <div id="how-it-works-section-2-small-text-wrapper">
+          <div id="how-it-works-section-1-small-text-wrapper">
             <SmallText
               text="In just few easy step, you are all set to manage your business finances.
               Manage all expenses with Spend.In all in one place."

@@ -8,6 +8,7 @@
   justify-content: center;
   gap: 24px;
   width: 200px;
+  text-align: center;
 }
 
 .how-it-works-section-1-step-img {
@@ -27,4 +28,8 @@
   top: -25px;
   left: -25px;
   background-color: $primary-default-500;
+}
+
+.how-it-works-section-1-step-text {
+  width: 180px;
 }

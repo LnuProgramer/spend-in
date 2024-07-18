@@ -55,7 +55,7 @@ function WhyUseSection2() {
           />
         </div>
         <img
-          src="images/raster/why-use-section-2/transactionHistory.png"
+          src="images/raster/why-use-section-2/transaction-history.png"
           alt="transaction history"
           id="transaction-history-img"
         />

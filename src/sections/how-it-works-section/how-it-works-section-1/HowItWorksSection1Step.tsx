@@ -29,12 +29,14 @@ function HowItWorksSection1Step({
         alt="Step"
         className="how-it-works-section-1-step-img"
       />
-      <MediumSmallText
-        text={mediumSmallText}
-        textColor="white"
-        fontSize={20}
-        lineHeight={30}
-      />
+      <div className="how-it-works-section-1-step-text">
+        <MediumSmallText
+          text={mediumSmallText}
+          textColor="white"
+          fontSize={20}
+          lineHeight={30}
+        />
+      </div>
     </div>
   );
 }
