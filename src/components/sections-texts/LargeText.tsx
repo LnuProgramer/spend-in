@@ -4,14 +4,19 @@ import "./LargeTextStyle.scss";
 type LargeTextProps = {
   text: string;
   textColor: string;
-  fontSize: number;
-  lineHeight: number;
+  fontSizeVw: number;
+  lineHeightVw: number;
 };
-function LargeText({ text, textColor, fontSize, lineHeight }: LargeTextProps) {
+function LargeText({
+  text,
+  textColor,
+  fontSizeVw,
+  lineHeightVw,
+}: LargeTextProps) {
   return (
     <h1
       className={`large-text ${textColor}`}
-      style={{ fontSize: `${fontSize}px`, lineHeight: `${lineHeight}px` }}
+      style={{ fontSize: `${fontSizeVw}vw`, lineHeight: `${lineHeightVw}vw` }}
     >
       {text}
     </h1>

@@ -21,15 +21,14 @@
 }
 
 .main-button {
-  gap: 10px;
   border: none;
-  border-radius: 30px;
-  padding: 14px 32px;
+  border-radius: 2.083vw;
+  padding: 0.972vw 2.22vw;
   width: fit-content;
   height: fit-content;
-  font-size: 16px;
+  font-size: 1.11vw;
   font-weight: 600;
-  line-height: 24px;
+  line-height: 1.66vw;
   text-align: center;
   letter-spacing: -0.02em;
   color: #ffffff;
@@ -48,7 +47,7 @@
     left: 0px;
     right: 0px;
     bottom: 0px;
-    border-radius: 30px;
+    border-radius: 2.083vw;
     pointer-events: none;
   }
 

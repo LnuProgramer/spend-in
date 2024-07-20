@@ -1,23 +1,23 @@
 import React from "react";
 import "./MediumSmallTextStyle.scss";
 
-type MediumSmallTextProps = {
+type MediumSmallTextPVwrops = {
   text: string;
   textColor: string;
-  fontSize: number;
-  lineHeight: number;
+  fontSizeVw: number;
+  lineHeightVw: number;
 };
 
 function MediumSmallText({
   text,
   textColor,
-  fontSize,
-  lineHeight,
-}: MediumSmallTextProps) {
+  fontSizeVw,
+  lineHeightVw,
+}: MediumSmallTextPVwrops) {
   return (
     <h3
       className={`medium-small-text ${textColor}`}
-      style={{ fontSize: `${fontSize}px`, lineHeight: `${lineHeight}px` }}
+      style={{ fontSize: `${fontSizeVw}vw`, lineHeight: `${lineHeightVw}vw` }}
     >
       {text}
     </h3>

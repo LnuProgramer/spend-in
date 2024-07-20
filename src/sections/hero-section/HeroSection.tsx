@@ -17,21 +17,21 @@ function HeroSection() {
           text="All your business
           expenses in one place."
           textColor="white"
-          fontSize={72}
-          lineHeight={108}
+          fontSizeVw={5}
+          lineHeightVw={7.5}
         />
         <div id="hero-section-small-text-wrapper">
           <SmallText
             text="Your one-stop finance empower platform."
             textColor="onBlackBg"
-            fontSize={24}
-            lineHeight={36}
+            fontSizeVw={1.66}
+            lineHeightVw={2.5}
           />
           <SmallText
             text="Manage all your business expenses with our supafast app."
             textColor="onBlackBg"
-            fontSize={24}
-            lineHeight={36}
+            fontSizeVw={1.66}
+            lineHeightVw={2.5}
           />
         </div>
         <div id="hero-section-button-wrapper">

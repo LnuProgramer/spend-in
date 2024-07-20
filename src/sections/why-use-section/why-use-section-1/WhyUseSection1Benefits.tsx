@@ -12,19 +12,19 @@ type BenefitsProps = {
 function Benefits({ imgSrc, mediumText, smallText }: BenefitsProps) {
   return (
     <div className="why-use-section-1-benefits-wrapper-blocks">
-      <img src={imgSrc} alt="benefit image" className="benefit-img"></img>
+      <img src={imgSrc} alt="benefit" className="benefit-img" />
       <div className="why-use-section-1-benefits-text">
         <MediumText
           text={mediumText}
           textColor="black"
-          fontSize={24}
-          lineHeight={36}
+          fontSizeVw={1.66}
+          lineHeightVw={2.5}
         />
         <SmallText
           text={smallText}
           textColor="onWhiteBg"
-          fontSize={16}
-          lineHeight={24}
+          fontSizeVw={1.11}
+          lineHeightVw={1.66}
         />
       </div>
     </div>

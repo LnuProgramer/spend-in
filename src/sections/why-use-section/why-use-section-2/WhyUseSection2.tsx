@@ -13,16 +13,16 @@ function WhyUseSection2() {
         <MediumText
           text="WHY USE SPEND.IN"
           textColor="primary"
-          fontSize={20}
-          lineHeight={30}
+          fontSizeVw={1.388}
+          lineHeightVw={2.083}
         />
         <div id="why-use-section-2-small-and-large-text-wrapper">
           <div id="why-use-section-2-large-text-wrapper">
             <LargeText
               text="Easy, Simple, Affordable"
               textColor="black"
-              fontSize={40}
-              lineHeight={60}
+              fontSizeVw={2.77}
+              lineHeightVw={4.166}
             />
           </div>
           <div id="why-use-section-2-small-text-wrapper">
@@ -30,8 +30,8 @@ function WhyUseSection2() {
               text="Our platform helps your business in managing expenses.
               These are some of the reasons why you should use our platform in managing business finances."
               textColor="onWhiteBg"
-              fontSize={20}
-              lineHeight={30}
+              fontSizeVw={1.388}
+              lineHeightVw={2.083}
             />
           </div>
         </div>

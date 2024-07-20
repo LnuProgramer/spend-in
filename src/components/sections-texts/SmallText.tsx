@@ -4,15 +4,20 @@ import "./SmallTextStyle.scss";
 type SmallTextProps = {
   text: string;
   textColor: string;
-  fontSize: number;
-  lineHeight: number;
+  fontSizeVw: number;
+  lineHeightVw: number;
 };
 
-function SmallText({ text, textColor, fontSize, lineHeight }: SmallTextProps) {
+function SmallText({
+  text,
+  textColor,
+  fontSizeVw,
+  lineHeightVw,
+}: SmallTextProps) {
   return (
     <p
       className={`small-text ${textColor}`}
-      style={{ fontSize: `${fontSize}px`, lineHeight: `${lineHeight}px` }}
+      style={{ fontSize: `${fontSizeVw}vw`, lineHeight: `${lineHeightVw}vw` }}
     >
       {text}
     </p>

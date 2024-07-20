@@ -8,55 +8,54 @@
 
 #how-it-works-section-2-img {
   width: 40.83vw;
-  border-radius: 14px;
+  border-radius: 0.972vw;
 }
 
 #how-it-works-section-2-text-and-steps-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 3.81vw;
+  gap: 1.3423vw;
+  z-index: 1;
 }
 
 #how-it-works-section-2-text-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  width: 100%;
-  max-width: 500px;
-  min-width: 400px;
+  gap: 0.833vw;
+  width: 34.0972vw;
 }
 
 #how-it-works-section-2-small-and-large-text-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 1.66vw;
 }
 
 #how-it-works-section-2-steps-wrapper {
-  padding: 32px;
-  width: 100%;
+  padding: 2.22vw;
+  padding-right: 5.138vw;
+  width: fit-content;
   height: fit-content;
   background-color: $secondinary-default-500;
-  border-radius: 14px;
+  border-radius: 0.972vw;
 }
 
 .how-it-works-section-2-steps-line {
   position: relative;
-  left: 24px;
-  top: -1px;
-  height: 42px;
-  border-left: 2px solid $primary-default-500;
+  left: 1.66vw;
+  top: -0.0694vw;
+  height: 2.916vw;
+  border: 0.1vw solid $primary-default-500;
   width: 0;
 }
 
 #how-it-works-section-2-steps-line-dashed {
-  border-left: 2px dashed $primary-light-100;
+  border: 0.1vw dashed $primary-light-100;
 }
 
 .how-it-works-section-2-step-wrapper {
   position: relative;
-  top: -1px;
+  top: -0.0694vw;
   width: fit-content;
   height: fit-content;
 }

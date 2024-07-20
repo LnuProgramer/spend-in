@@ -14,16 +14,16 @@ function HowItWorksSection1() {
         <MediumText
           text="HOW IT WORKS"
           textColor="primary"
-          fontSize={20}
-          lineHeight={30}
+          fontSizeVw={1.38}
+          lineHeightVw={2.083}
         />
         <div id="how-it-works-section-1-small-and-large-text-wrapper">
           <div id="how-it-works-section-1-large-text-wrapper">
             <LargeText
               text="Few Easy Steps and Done"
               textColor="white"
-              fontSize={40}
-              lineHeight={60}
+              fontSizeVw={2.77}
+              lineHeightVw={4.166}
             />
           </div>
           <div id="how-it-works-section-1-small-text-wrapper">
@@ -31,8 +31,8 @@ function HowItWorksSection1() {
               text="In just few easy step, you are all set to manage your business finances.
               Manage all expenses with Spend.In all in one place."
               textColor="onBlackBg"
-              fontSize={20}
-              lineHeight={30}
+              fontSizeVw={1.38}
+              lineHeightVw={2.083}
             />
           </div>
         </div>

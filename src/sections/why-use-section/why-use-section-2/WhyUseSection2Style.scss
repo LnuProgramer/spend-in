@@ -1,9 +1,8 @@
 #why-use-section-2-text-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 0.833vw;
   width: 100%;
-  min-width: 600px;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -12,28 +11,27 @@
 #why-use-section-2-small-and-large-text-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 1.66vw;
 }
 
 #why-use-section-2-small-text-wrapper {
-  max-width: 720px;
-  min-width: 600px;
+  max-width: 50vw;
 }
 
 #why-use-section-2-benefits-and-transaction-history-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 64px;
+  margin-top: 4.44vw;
 }
 
 #why-use-section-2-benefits-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 44px;
+  gap: 3.055vw;
 }
 
 #transaction-history-img {
-  border-radius: 14px;
+  border-radius: 0.972vw;
   width: 42.22vw;
 }

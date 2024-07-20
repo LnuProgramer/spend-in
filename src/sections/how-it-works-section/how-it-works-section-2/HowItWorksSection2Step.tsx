@@ -20,15 +20,15 @@ function HowItWorksSection2Step({
         <MediumText
           text={circleText}
           textColor={`${circleBg === "white" ? "secondinary" : "white"}`}
-          fontSize={24}
-          lineHeight={36}
+          fontSizeVw={1.66}
+          lineHeightVw={2.5}
         />
       </div>
       <MediumSmallText
         text={mediumSmallText}
         textColor="white"
-        fontSize={20}
-        lineHeight={30}
+        fontSizeVw={1.338}
+        lineHeightVw={2.083}
       />
     </div>
   );

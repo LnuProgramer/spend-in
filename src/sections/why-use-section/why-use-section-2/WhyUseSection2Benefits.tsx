@@ -21,14 +21,14 @@ function WhyUseSection2Benefits({
         <MediumText
           text={mediumText}
           textColor="black"
-          fontSize={24}
-          lineHeight={36}
+          fontSizeVw={1.66}
+          lineHeightVw={2.5}
         />
         <SmallText
           text={smallText}
           textColor="onWhiteBg"
-          fontSize={16}
-          lineHeight={24}
+          fontSizeVw={1.11}
+          lineHeightVw={1.66}
         />
       </div>
     </div>

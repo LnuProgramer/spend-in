@@ -4,20 +4,20 @@ import "./MediumTextStyle.scss";
 type MediumTextProps = {
   text: string;
   textColor: string;
-  fontSize: number;
-  lineHeight: number;
+  fontSizeVw: number;
+  lineHeightVw: number;
 };
 
 function MediumText({
   text,
   textColor,
-  fontSize,
-  lineHeight,
+  fontSizeVw,
+  lineHeightVw,
 }: MediumTextProps) {
   return (
     <h2
       className={`medium-text ${textColor}`}
-      style={{ fontSize: `${fontSize}px`, lineHeight: `${lineHeight}px` }}
+      style={{ fontSize: `${fontSizeVw}vw`, lineHeight: `${lineHeightVw}vw` }}
     >
       {text}
     </h2>
