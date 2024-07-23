@@ -9,6 +9,7 @@
   max-width: 100%;
   height: fit-content;
   overflow: hidden;
+  z-index: -10;
 
   &.dark {
     @include section-background($secondinary-dark-700);

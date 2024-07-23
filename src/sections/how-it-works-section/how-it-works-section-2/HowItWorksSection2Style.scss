@@ -1,9 +1,9 @@
 @import "../../../Colors";
 
-#how-it-works-section-2-wrapper {
+#how-it-works-section-2 {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  height: fit-content;
 }
 
 #how-it-works-section-2-img {
@@ -14,8 +14,7 @@
 #how-it-works-section-2-text-and-steps-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 1.3423vw;
-  z-index: 1;
+  justify-content: space-between;
 }
 
 #how-it-works-section-2-text-wrapper {

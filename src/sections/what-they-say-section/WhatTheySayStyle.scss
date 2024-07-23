@@ -1,0 +1,23 @@
+#what-they-say {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4.44vw;
+}
+
+#what-they-say-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.66vw;
+  width: 39.44vw;
+  height: fit-content;
+  text-align: center;
+}
+
+#what-they-say-medium-large-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.833vw;
+}

@@ -1,25 +1,43 @@
 @import "../../Colors";
 
+#hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7.82vw;
+}
+
+#hero-section-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
+  gap: 5.2vw;
+}
+
 #hero-section-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 51.94vw;
   height: fit-content;
   text-align: center;
-  margin: 0 auto;
-  margin-top: 7.82vw;
+  gap: 1.66vw;
 }
 
-#hero-section-small-text-wrapper {
+#hero-section-small-text-and-buttons-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: fit-content;
   height: fit-content;
-  margin: 0 auto;
-  margin-top: 1.66vw;
 }
 
 #hero-section-button-wrapper {
   display: flex;
   width: fit-content;
   height: fit-content;
-  margin: 0 auto;
   gap: 1.66vw;
   margin-top: 2.77vw;
 }
@@ -27,9 +45,6 @@
 #spend-in-img {
   position: relative;
   bottom: -4px;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-top: 5.2vw;
   width: 83.33vw;
   border-top-right-radius: 0.97vw;
   border-top-left-radius: 0.97vw;

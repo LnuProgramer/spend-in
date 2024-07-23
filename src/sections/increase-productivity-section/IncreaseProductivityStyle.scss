@@ -1,0 +1,85 @@
+#increase-productivity-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4.44vw;
+}
+
+#increase-productivity-section-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.833vw;
+  width: 44.027vw;
+}
+
+#increase-productivity-section-switch-benefits-and-chart-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#increase-productivity-section-switch-and-benefits-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3.33vw;
+  width: 39.166vw;
+  height: fit-content;
+  overflow: hidden;
+}
+
+#increase-productivity-section-benefits-wrapper {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  position: relative;
+  width: 75.693vw;
+  left: -39.166vw;
+  transition: 0.5s ease-out all;
+
+  &.isToggled {
+    left: 0;
+  }
+
+  div {
+    transition: 0.5s ease-out all;
+    &.isToggled {
+      opacity: 0;
+    }
+  }
+}
+
+#increase-productivity-section-benefit-block-wrapper-1 {
+  width: 39.166vw;
+}
+
+#increase-productivity-section-benefit-block-wrapper-2 {
+  width: 36.527vw;
+}
+
+#increase-productivity-section-chart-wrapper {
+  width: 33.75vw;
+  overflow: hidden;
+}
+
+#increase-productivity-section-chart-blocks-wrapper {
+  display: flex;
+  position: relative;
+  align-items: start;
+  width: 67.5vw;
+  left: -33.75vw;
+  transition: 0.5s ease-out all;
+
+  &.isToggled {
+    left: 0;
+  }
+}
+
+.increase-productivity-section-chart-img {
+  width: 33.75vw;
+  border-radius: 0.972vw;
+  transition: 0.5s ease-out all;
+
+  &.isToggled {
+    opacity: 0;
+  }
+}

@@ -21,6 +21,10 @@
     @include text-color($secondinary-default-500);
   }
 
+  &.secondinary-light {
+    @include text-color($secondinary-light-300);
+  }
+
   &.white {
     @include text-color(#ffffff);
   }

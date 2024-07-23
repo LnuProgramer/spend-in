@@ -1,0 +1,53 @@
+@import "../../Colors";
+
+#checkbox {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+#switch {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  width: 25.55vw;
+  height: 3.88vw;
+  border-radius: 2.0833vw;
+}
+
+#switch h2 {
+  z-index: 1;
+  pointer-events: none;
+  transition: 0.5s ease-out all;
+}
+
+#slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: $primary-default-500;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #f3f5f7;
+  border-radius: 2.0833vw;
+}
+
+#slider::before {
+  transition: 0.5s ease-out all;
+  position: absolute;
+  content: "";
+  left: 0.1388vw;
+  bottom: 0.1388vw;
+  height: 3.611vw;
+  width: 11.7361vw;
+  border-radius: 2.0833vw;
+  background-color: $primary-default-500;
+}
+
+#checkbox:checked + #slider::before {
+  transform: translateX(11.7361vw);
+  width: 13.5416vw;
+}

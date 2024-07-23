@@ -9,7 +9,7 @@ import Button from "../../../components/button/Button";
 
 function HowItWorksSection1() {
   return (
-    <SectionBg bgColor="dark" paddingVw={8.33}>
+    <SectionBg bgColor="dark" paddingVw={8.33} id="how-it-works-section-1">
       <div id="how-it-works-section-1-text-wrapper">
         <MediumText
           text="HOW IT WORKS"
@@ -37,28 +37,30 @@ function HowItWorksSection1() {
           </div>
         </div>
       </div>
-      <div id="how-it-works-section-1-steps-wrapper">
-        <HowItWorksSection1Step
-          imgSrc="images/vector/how-it-works-section-1/step1.svg"
-          circleText="1"
-          mediumSmallText="Register your 
+      <div id="how-it-works-section-1-steps-and-buttons-wrapper">
+        <div id="how-it-works-section-1-steps-wrapper">
+          <HowItWorksSection1Step
+            imgSrc="images/vector/how-it-works-section-1/step1.svg"
+            circleText="1"
+            mediumSmallText="Register your 
 Spend.In account."
-        />
-        <HowItWorksSection1Step
-          imgSrc="images/vector/how-it-works-section-1/step2.svg"
-          circleText="2"
-          mediumSmallText="Fill in the list of your 
+          />
+          <HowItWorksSection1Step
+            imgSrc="images/vector/how-it-works-section-1/step2.svg"
+            circleText="2"
+            mediumSmallText="Fill in the list of your 
 business expenses."
-        />
-        <HowItWorksSection1Step
-          imgSrc="images/vector/how-it-works-section-1/step3.svg"
-          circleText="3"
-          mediumSmallText="Done, let’s continue the work."
-        />
-      </div>
-      <div id="how-it-works-section-1-button-wrapper">
-        <Button buttonText="Get a Free Demo" buttonColor="primary" />
-        <Button buttonText="See Pricing" buttonColor="secondinary" />
+          />
+          <HowItWorksSection1Step
+            imgSrc="images/vector/how-it-works-section-1/step3.svg"
+            circleText="3"
+            mediumSmallText="Done, let’s continue the work."
+          />
+        </div>
+        <div id="how-it-works-section-1-button-wrapper">
+          <Button buttonText="Get a Free Demo" buttonColor="primary" />
+          <Button buttonText="See Pricing" buttonColor="secondinary" />
+        </div>
       </div>
     </SectionBg>
   );

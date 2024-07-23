@@ -1,3 +1,10 @@
+#how-it-works-section-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4.44vw;
+}
+
 #how-it-works-section-1-text-wrapper {
   display: flex;
   flex-direction: column;
@@ -18,18 +25,24 @@
   width: 47.91vw;
 }
 
+#how-it-works-section-1-steps-and-buttons-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4.44vw;
+  width: 100%;
+}
+
 #how-it-works-section-1-steps-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  margin-top: 4.44vw;
+  width: 100%;
 }
 
 #how-it-works-section-1-button-wrapper {
   display: flex;
   width: fit-content;
   height: fit-content;
-  margin: 0 auto;
   gap: 1.66vw;
-  margin-top: 2.77vw;
 }
