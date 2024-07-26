@@ -128,6 +128,7 @@ function WhatTheySay() {
                   opacity={
                     index >= counter && index <= counter + 2 ? true : false
                   }
+                  isCenter={index === counter + 1 ? true : false}
                 />
               );
             })

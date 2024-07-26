@@ -8,6 +8,7 @@ import HowItWorks from "./sections/how-it-works-section/HowItWorks";
 import IncreaseProductivity from "./sections/increase-productivity-section/IncreaseProductivity";
 import WhatTheySay from "./sections/what-they-say-section/WhatTheySay";
 import WhyUse from "./sections/why-use-section/WhyUse";
+import DownloadNow from "./sections/download-now/DownloadNow";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <IncreaseProductivity />
       <WhatTheySay />
       <GetStarted />
+      <DownloadNow />
       <Footer />
     </div>
   );

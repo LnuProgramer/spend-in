@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./ReviewsStyle.scss";
 import MediumText from "../../components/sections-texts/MediumText";
 import MediumSmallText from "../../components/sections-texts/MediumSmallText";
@@ -12,6 +12,7 @@ type ReviewsProps = {
   name: string;
   position: string;
   opacity: boolean;
+  isCenter: boolean;
 };
 
 function Reviews({
@@ -21,6 +22,7 @@ function Reviews({
   name,
   position,
   opacity,
+  isCenter,
 }: ReviewsProps) {
   return (
     <div
@@ -30,7 +32,11 @@ function Reviews({
         pointerEvents: opacity ? "auto" : "none",
       }}
     >
-      <div className="what-they-say-review-block-text-wrapper">
+      <div
+        className={`what-they-say-review-block-text-wrapper ${
+          isCenter && "is-center"
+        }`}
+      >
         <MediumText
           text={titleText}
           textColor="white"
@@ -59,7 +65,7 @@ function Reviews({
           />
           <SmallText
             text={position}
-            textColor="onBlackBg"
+            textColor={isCenter ? "onWhiteBg" : "onBlackBg"}
             fontSizeVw={0.972}
             lineHeightVw={1.4583}
           />
