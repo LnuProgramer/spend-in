@@ -56,7 +56,12 @@ function Header() {
       </div>
       <div className="header-divs" id="header-div-right">
         <h2 id="login-button">Login</h2>
-        <Button buttonColor="primary" buttonText="Get Demo" />
+        <Button
+          buttonColor="primary"
+          buttonText="Get Demo"
+          rounded={false}
+          onClick={() => {}}
+        />
       </div>
     </header>
   );

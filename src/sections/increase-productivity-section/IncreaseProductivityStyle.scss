@@ -33,15 +33,15 @@
   justify-content: space-between;
   position: relative;
   width: 75.693vw;
-  left: -39.166vw;
-  transition: 0.5s ease-out all;
+  transform: translateX(-39.166vw);
+  transition: 0.5s ease-in-out transform;
 
   &.isToggled {
-    left: 0;
+    transform: translateX(0);
   }
 
   div {
-    transition: 0.5s ease-out all;
+    transition: 0.5s ease-in-out opacity;
     &.isToggled {
       opacity: 0;
     }
@@ -66,18 +66,18 @@
   position: relative;
   align-items: start;
   width: 67.5vw;
-  left: -33.75vw;
-  transition: 0.5s ease-out all;
+  transform: translateX(-33.75vw);
+  transition: 0.5s ease-in-out transform;
 
   &.isToggled {
-    left: 0;
+    transform: translateX(0);
   }
 }
 
 .increase-productivity-section-chart-img {
   width: 33.75vw;
   border-radius: 0.972vw;
-  transition: 0.5s ease-out all;
+  transition: 0.5s ease-in-out all;
 
   &.isToggled {
     opacity: 0;

@@ -58,8 +58,18 @@ business expenses."
           />
         </div>
         <div id="how-it-works-section-1-button-wrapper">
-          <Button buttonText="Get a Free Demo" buttonColor="primary" />
-          <Button buttonText="See Pricing" buttonColor="secondinary" />
+          <Button
+            buttonText="Get a Free Demo"
+            buttonColor="primary"
+            rounded={false}
+            onClick={() => {}}
+          />
+          <Button
+            buttonText="See Pricing"
+            buttonColor="secondinary"
+            rounded={false}
+            onClick={() => {}}
+          />
         </div>
       </div>
     </SectionBg>

@@ -4,16 +4,19 @@ import "./ButtonStyle.scss";
 type ButtonProps = {
   buttonColor: string;
   buttonText: any;
+  rounded: boolean;
+  onClick: () => void;
 };
 
-function Button({ buttonColor, buttonText }: ButtonProps) {
+function Button({ buttonColor, buttonText, rounded, onClick }: ButtonProps) {
   const [isFocused, setIsFocused] = useState(false);
 
   const handleonClick = () => {
     setIsFocused(true);
     setTimeout(() => {
       setIsFocused(false);
-    }, 300);
+    }, 250);
+    onClick();
   };
   return (
     <button
@@ -22,6 +25,10 @@ function Button({ buttonColor, buttonText }: ButtonProps) {
       }`}
       type="button"
       onClick={handleonClick}
+      style={{
+        borderRadius: rounded ? "100%" : "2.083vw",
+        padding: rounded ? "0.972vw" : "0.972vw 2.22vw",
+      }}
     >
       {buttonText}
     </button>

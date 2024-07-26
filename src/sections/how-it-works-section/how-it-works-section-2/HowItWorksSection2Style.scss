@@ -9,12 +9,14 @@
 #how-it-works-section-2-img {
   width: 40.83vw;
   border-radius: 0.972vw;
+  z-index: 1;
 }
 
 #how-it-works-section-2-text-and-steps-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  z-index: 1;
 }
 
 #how-it-works-section-2-text-wrapper {

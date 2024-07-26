@@ -35,8 +35,18 @@ function HeroSection() {
               lineHeightVw={2.5}
             />
             <div id="hero-section-button-wrapper">
-              <Button buttonText="Get a Free Demo" buttonColor="primary" />
-              <Button buttonText="See Pricing" buttonColor="secondinary" />
+              <Button
+                buttonText="Get a Free Demo"
+                buttonColor="primary"
+                rounded={false}
+                onClick={() => {}}
+              />
+              <Button
+                buttonText="See Pricing"
+                buttonColor="secondinary"
+                rounded={false}
+                onClick={() => {}}
+              />
             </div>
           </div>
         </div>

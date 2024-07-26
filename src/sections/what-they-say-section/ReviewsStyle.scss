@@ -1,0 +1,43 @@
+@import "../../Colors";
+
+.what-they-say-review-block-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 21.777vw;
+  height: 20.833vw;
+  border-radius: 0.972vw;
+  background-color: $secondinary-default-500;
+  padding: 2.22vw;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.what-they-say-review-block-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 13.68vw;
+  gap: 1.11vw;
+  border-bottom: 0.138vw solid rgba($color: $secondinary-light-300, $alpha: 0.2);
+}
+
+.what-they-say-review-block-text-wrapper h3 {
+  overflow-y: auto;
+}
+.what-they-say-review-block-client-wrapper {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 1.66vw;
+}
+
+.what-they-say-review-block-client-img {
+  width: 4.861vw;
+  border-radius: 0.972vw;
+}
+
+.what-they-say-review-block-client-text-wrapper {
+  display: flex;
+  flex-direction: column;
+}

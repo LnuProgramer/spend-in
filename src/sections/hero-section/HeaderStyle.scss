@@ -8,6 +8,7 @@ header {
   justify-content: space-around;
   align-items: center;
   color: #ffffff;
+  z-index: 1;
 }
 
 .header-divs {
@@ -38,7 +39,8 @@ header {
 }
 
 nav {
-  transition: all 0.25s ease-out;
+  transition-property: scale, color;
+  transition: 0.25s ease-in-out;
 
   &:hover {
     cursor: pointer;
@@ -55,7 +57,8 @@ nav {
 
   &:hover {
     .arrow-down path {
-      transition: all 0.25s ease-out;
+      transition-property: scale, color;
+      transition: 0.25s ease-in-out;
       stroke: $secondinary-light-200;
     }
   }
@@ -71,7 +74,8 @@ nav {
   line-height: 1.875vw;
   letter-spacing: -0.02em;
   color: $secondinary-light-200;
-  transition: all 0.25s ease-out;
+  transition-property: scale, color;
+  transition: 0.25s ease-in-out;
 
   &:hover {
     cursor: pointer;

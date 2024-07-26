@@ -1,3 +1,5 @@
+@import "../../Colors";
+
 #what-they-say {
   display: flex;
   flex-direction: column;
@@ -13,6 +15,8 @@
   width: 39.44vw;
   height: fit-content;
   text-align: center;
+  z-index: 1;
+  flex-wrap: wrap;
 }
 
 #what-they-say-medium-large-text-wrapper {
@@ -20,4 +24,29 @@
   flex-direction: column;
   align-items: center;
   gap: 0.833vw;
+}
+
+#what-they-say-section-reviews {
+  z-index: 1;
+  width: 100%;
+}
+
+#what-they-say-section-reviews-wrapper {
+  position: relative;
+  display: flex;
+  gap: 1.74vw;
+  align-items: center;
+  width: fit-content;
+  transition: transform 0.5s ease-in-out;
+}
+
+#what-they-say-section-button-wrapper {
+  display: flex;
+  gap: 1.66vw;
+  align-items: center;
+  z-index: 1;
+}
+
+.what-they-say-section-button-arrows {
+  width: 1.25vw;
 }
