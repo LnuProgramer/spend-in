@@ -12,14 +12,14 @@ function IncreaseProductivitySwitch({
   onToggle,
 }: IncreaseProductivitySwitchProps) {
   return (
-    <label id="switch">
+    <label id="increase-productivity-switch">
       <input
         type="checkbox"
-        id="checkbox"
+        id="increase-productivity-checkbox"
         checked={isToggled}
         onChange={onToggle}
       />
-      <span id="slider"></span>
+      <span id="increase-productivity-slider"></span>
       <MediumText
         text="With Spend.In"
         textColor={!isToggled ? `white` : `secondinary-light`}

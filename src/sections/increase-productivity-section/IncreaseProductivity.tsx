@@ -45,7 +45,7 @@ Managing Expenses"
             <div className={!isToggled ? `isToggled` : ``}>
               <IncreaseProductivityBenefits
                 id="increase-productivity-section-benefit-block-wrapper-1"
-                imgSrc="images/vector/increase-productivity/cancel-circle.svg"
+                imgSrc="images/vector/increase-productivity-and-get-started/cancel-circle.svg"
                 largeText="Taking too long to tidy up administrative files makes 
 it unproductive"
                 benegit1Text="Complex recording process due to every administrative file in a different place."
@@ -56,7 +56,7 @@ it unproductive"
             <div className={isToggled ? `isToggled` : ``}>
               <IncreaseProductivityBenefits
                 id="increase-productivity-section-benefit-block-wrapper-2"
-                imgSrc="images/vector/increase-productivity/success-circle.svg"
+                imgSrc="images/vector/increase-productivity-and-get-started/success-circle.svg"
                 largeText="Track Business Expenses until its Milisecond"
                 benegit1Text="Analyze your business cost easily with group transaction thorugh tagging feature."
                 benegit2Text="Add more than one card for payment. Integrated with more than 50+ payment method and support bulk payment."

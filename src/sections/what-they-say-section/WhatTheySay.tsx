@@ -148,6 +148,7 @@ function WhatTheySay() {
           }
           buttonColor={counter > 0 ? "primary" : "secondinary"}
           rounded={true}
+          widthFull={false}
           onClick={handlePrevSlide}
         />
         <Button
@@ -164,6 +165,7 @@ function WhatTheySay() {
               : "secondinary"
           }
           rounded={true}
+          widthFull={false}
           onClick={handleNextSlide}
         />
       </div>

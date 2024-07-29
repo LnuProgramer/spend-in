@@ -1,13 +1,13 @@
 @import "../../Colors";
 
-#checkbox {
+#increase-productivity-checkbox {
   position: absolute;
   width: 0;
   height: 0;
   opacity: 0;
 }
 
-#switch {
+#increase-productivity-switch {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -17,16 +17,15 @@
   border-radius: 2.0833vw;
 }
 
-#switch h2 {
+#increase-productivity-switch h2 {
   z-index: 1;
   pointer-events: none;
   transition: 0.5s ease-in-out all;
 }
 
-#slider {
+#increase-productivity-slider {
   position: absolute;
   cursor: pointer;
-  background-color: $primary-default-500;
   top: 0;
   bottom: 0;
   left: 0;
@@ -35,7 +34,7 @@
   border-radius: 2.0833vw;
 }
 
-#slider::before {
+#increase-productivity-slider::before {
   transition-property: width, transform;
   transition: 0.5s ease-in-out;
   position: absolute;
@@ -48,7 +47,8 @@
   background-color: $primary-default-500;
 }
 
-#checkbox:checked + #slider::before {
+#increase-productivity-checkbox:checked
+  + #increase-productivity-slider::before {
   transform: translateX(11.7361vw);
   width: 13.5416vw;
 }

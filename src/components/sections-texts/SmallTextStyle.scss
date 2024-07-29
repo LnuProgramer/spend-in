@@ -16,4 +16,8 @@
   &.onWhiteBg {
     @include text-color($secondinary-light-400);
   }
+
+  &.dark {
+    @include text-color($secondinary-default-500);
+  }
 }

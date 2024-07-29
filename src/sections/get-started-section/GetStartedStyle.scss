@@ -1,0 +1,63 @@
+@import "../../Colors.scss";
+
+#get-started {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4.44vw;
+}
+
+#get-started-section-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.66vw;
+}
+
+#get-started-section-switch-and-subscriptions-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.4583vw;
+  width: 100%;
+}
+
+#get-started-section-switch-and-discount-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 16.3194vw;
+  height: 5.972vw;
+}
+
+#get-started-section-switch-wrapepr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#get-started-section-discount-wrapepr {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  gap: 0.855vw;
+}
+
+#get-started-section-discount {
+  position: relative;
+  padding: 0.277vw 0.833vw;
+  border-radius: 2.0833vw;
+  background-color: $primary-light-100;
+}
+
+#get-started-section-discount-img {
+  width: 3.472vw;
+}
+
+#get-started-section-subscriptions-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}

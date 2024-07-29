@@ -1,0 +1,82 @@
+@import "../../Colors.scss";
+
+.get-started-subscription-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.66vw;
+  padding: 2.22vw;
+  background-color: #f3f5f7;
+  border-radius: 0.972vw;
+  width: 22.22vw;
+}
+
+.get-started-subscription-plan-text-and-for-who {
+  display: flex;
+  flex-direction: column;
+  gap: 0.833vw;
+}
+
+.get-started-subscription-plan-text-and-populat-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.get-started-subscription-plan-text {
+  display: flex;
+  align-items: center;
+  gap: 0.833vw;
+}
+
+.get-started-subscription-plan-text-img {
+  width: 2.22vw;
+}
+
+.get-started-subscription-plan-popular {
+  padding: 0.277vw 1.11vw;
+  background-color: $secondinary-dark-700;
+  border-radius: 2.0833vw;
+}
+
+.get-started-subscription-price-wrapper {
+  display: flex;
+}
+
+.get-started-subscription-price-change {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  transition: transform 0.5s ease-in-out;
+
+  &.scroll {
+    transform: translateY(-4.2132vw);
+  }
+}
+
+.get-started-subscription-price-change-block {
+  transition: opacity 0.5s ease-in-out;
+  display: flex;
+  gap: 0.694vw;
+  align-items: center;
+
+  &.isVisible {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.get-started-subscription-description-and-benefits-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2.22vw;
+}
+
+.get-started-subscription-benefits-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.66vw;
+}
+
+.get-started-subscription-button-wrapper {
+  margin-top: 1.11vw;
+}

@@ -5,10 +5,17 @@ type ButtonProps = {
   buttonColor: string;
   buttonText: any;
   rounded: boolean;
+  widthFull: boolean;
   onClick: () => void;
 };
 
-function Button({ buttonColor, buttonText, rounded, onClick }: ButtonProps) {
+function Button({
+  buttonColor,
+  buttonText,
+  rounded,
+  widthFull,
+  onClick,
+}: ButtonProps) {
   const [isFocused, setIsFocused] = useState(false);
 
   const handleonClick = () => {
@@ -28,6 +35,7 @@ function Button({ buttonColor, buttonText, rounded, onClick }: ButtonProps) {
       style={{
         borderRadius: rounded ? "100%" : "2.083vw",
         padding: rounded ? "0.972vw" : "0.972vw 2.22vw",
+        width: widthFull ? "100%" : "fit-content",
       }}
     >
       {buttonText}

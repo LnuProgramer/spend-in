@@ -60,6 +60,7 @@ function Header() {
           buttonColor="primary"
           buttonText="Get Demo"
           rounded={false}
+          widthFull={false}
           onClick={() => {}}
         />
       </div>

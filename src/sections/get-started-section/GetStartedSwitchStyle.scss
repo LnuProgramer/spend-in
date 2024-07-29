@@ -1,0 +1,44 @@
+@import "../../Colors.scss";
+
+#get-started-checkbox {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+#get-started-switch {
+  position: relative;
+  display: inline-block;
+  width: 4.861vw;
+  height: 2.5vw;
+  border-radius: 2.0833vw;
+}
+
+#get-started-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: $primary-default-500;
+  border-radius: 2.0833vw;
+}
+
+#get-started-slider::before {
+  transition-property: transform;
+  transition: 0.5s ease-in-out;
+  position: absolute;
+  left: 0.277vw;
+  bottom: 0.277vw;
+  content: "";
+  height: 1.944vw;
+  width: 1.944vw;
+  border-radius: 100%;
+  background-color: #ffffff;
+}
+
+#get-started-checkbox:checked + #get-started-slider::before {
+  transform: translateX(2.363vw);
+}

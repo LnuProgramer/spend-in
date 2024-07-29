@@ -16,4 +16,8 @@
   &.black {
     @include text-color($secondinary-dark-700);
   }
+
+  &.gray {
+    @include text-color($secondinary-light-400);
+  }
 }
