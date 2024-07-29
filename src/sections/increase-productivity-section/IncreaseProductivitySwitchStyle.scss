@@ -15,12 +15,12 @@
   width: 25.55vw;
   height: 3.88vw;
   border-radius: 2.0833vw;
-}
 
-#increase-productivity-switch h2 {
-  z-index: 1;
-  pointer-events: none;
-  transition: 0.5s ease-in-out all;
+  h2 {
+    z-index: 1;
+    pointer-events: none;
+    transition: 0.5s ease-in-out all;
+  }
 }
 
 #increase-productivity-slider {
@@ -32,19 +32,19 @@
   right: 0;
   background-color: #f3f5f7;
   border-radius: 2.0833vw;
-}
 
-#increase-productivity-slider::before {
-  transition-property: width, transform;
-  transition: 0.5s ease-in-out;
-  position: absolute;
-  content: "";
-  left: 0.1388vw;
-  bottom: 0.1388vw;
-  height: 3.611vw;
-  width: 11.7361vw;
-  border-radius: 2.0833vw;
-  background-color: $primary-default-500;
+  &::before {
+    transition-property: width, transform;
+    transition: 0.5s ease-in-out;
+    position: absolute;
+    content: "";
+    left: 0.1388vw;
+    bottom: 0.1388vw;
+    height: 3.611vw;
+    width: 11.7361vw;
+    border-radius: 2.0833vw;
+    background-color: $primary-default-500;
+  }
 }
 
 #increase-productivity-checkbox:checked

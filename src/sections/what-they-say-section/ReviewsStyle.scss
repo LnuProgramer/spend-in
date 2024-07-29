@@ -25,11 +25,12 @@
     border-bottom: 0.138vw solid
       rgba($color: $secondinary-light-400, $alpha: 0.2);
   }
+
+  h3 {
+    overflow-y: auto;
+  }
 }
 
-.what-they-say-review-block-text-wrapper h3 {
-  overflow-y: auto;
-}
 .what-they-say-review-block-client-wrapper {
   width: fit-content;
   height: fit-content;
@@ -46,8 +47,8 @@
 .what-they-say-review-block-client-text-wrapper {
   display: flex;
   flex-direction: column;
-}
 
-.what-they-say-review-block-client-text-wrapper p {
-  transition: color 0.5s ease-in-out;
+  p {
+    transition: color 0.5s ease-in-out;
+  }
 }

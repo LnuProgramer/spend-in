@@ -24,19 +24,19 @@
   right: 0;
   background-color: $primary-default-500;
   border-radius: 2.0833vw;
-}
 
-#get-started-slider::before {
-  transition-property: transform;
-  transition: 0.5s ease-in-out;
-  position: absolute;
-  left: 0.277vw;
-  bottom: 0.277vw;
-  content: "";
-  height: 1.944vw;
-  width: 1.944vw;
-  border-radius: 100%;
-  background-color: #ffffff;
+  &::before {
+    transition-property: transform;
+    transition: 0.5s ease-in-out;
+    position: absolute;
+    left: 0.277vw;
+    bottom: 0.277vw;
+    content: "";
+    height: 1.944vw;
+    width: 1.944vw;
+    border-radius: 100%;
+    background-color: #ffffff;
+  }
 }
 
 #get-started-checkbox:checked + #get-started-slider::before {
