@@ -53,7 +53,7 @@ function HeroSection() {
           </div>
         </div>
         <img
-          src="images/raster/hero/spend-inApp.png"
+          src="images/raster/hero/spend-in-app.png"
           id="spend-in-img"
           alt="Spend.in App"
         ></img>

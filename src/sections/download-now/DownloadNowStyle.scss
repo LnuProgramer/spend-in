@@ -1,0 +1,28 @@
+#download-now {
+  display: flex;
+  flex-direction: column;
+  gap: 2.22vw;
+}
+
+#download-now-section-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.66vw;
+  width: 35vw;
+  z-index: 1;
+}
+
+#download-now-section-medium-large-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.833vw;
+}
+
+#download-now-section-img {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border-top-left-radius: 1.25vw;
+  width: 49.166vw;
+  z-index: 1;
+}
