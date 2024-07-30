@@ -1,0 +1,56 @@
+@import "../../Colors.scss";
+
+#footer {
+  display: flex;
+  flex-direction: column;
+  gap: 2.22vw;
+}
+
+#footer-text-and-links-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  padding-bottom: 2.78vw;
+  border-bottom: 0.0694vw solid $primary-light-200;
+}
+
+#footer-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2.22vw;
+  width: 13.055vw;
+}
+
+#footer-text-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.972vw;
+}
+
+#footer-text-title-img {
+  width: 2.22vw;
+}
+
+#footer-links-wrapper {
+  display: flex;
+  justify-content: space-around;
+  width: 55.138vw;
+  margin-right: 3.5vw;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+#footer-terms-and-condition {
+  display: flex;
+  align-items: center;
+  gap: 2.22vw;
+}

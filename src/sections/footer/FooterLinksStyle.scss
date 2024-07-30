@@ -1,0 +1,23 @@
+@import "../../Colors.scss";
+.footer-links-block-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2.22vw;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.66vw;
+
+  a {
+    width: fit-content;
+    text-decoration: none;
+
+    &:hover {
+      p {
+        color: $secondinary-default-500;
+      }
+    }
+  }
+}

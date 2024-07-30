@@ -15,7 +15,7 @@ type Review = {
   position: string;
 };
 
-const reviewsObject: { [key: string]: Review } = {
+const reviewsList: { [key: string]: Review } = {
   review1: {
     titleText: "It’s just incredible!",
     reviewText:
@@ -70,7 +70,7 @@ function WhatTheySay() {
   const [counter, setCounter] = useState(0);
 
   const handleNextSlide = () => {
-    if (counter === Object.keys(reviewsObject).length - 3) return;
+    if (counter === Object.keys(reviewsList).length - 3) return;
     setCounter(counter + 1);
   };
 
@@ -108,9 +108,9 @@ function WhatTheySay() {
           id="what-they-say-section-reviews-wrapper"
           style={{ transform: `translateX(${counter * -27.987}vw)` }}
         >
-          {Object.keys(reviewsObject).length > 0 ? (
-            Object.keys(reviewsObject).map((reviewKey, index) => {
-              const review = reviewsObject[reviewKey];
+          {Object.keys(reviewsList).length > 0 ? (
+            Object.keys(reviewsList).map((reviewKey, index) => {
+              const review = reviewsList[reviewKey];
               if (
                 !review.titleText ||
                 !review.reviewText ||
@@ -160,7 +160,7 @@ function WhatTheySay() {
             />
           }
           buttonColor={
-            counter <= Object.keys(reviewsObject).length - 4
+            counter <= Object.keys(reviewsList).length - 4
               ? "primary"
               : "secondinary"
           }
