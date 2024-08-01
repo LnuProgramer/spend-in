@@ -10,8 +10,8 @@ import SectionBg from "./../../components/sections-bg/SectionBg";
 function HeroSection() {
   return (
     <SectionBg bgColor="dark" paddingVw={0} id="hero-section">
-      <Header />
       <Elipces />
+      <Header />
       <div id="hero-section-wrapper">
         <div id="hero-section-text-wrapper">
           <LargeText
@@ -40,14 +40,12 @@ function HeroSection() {
                 buttonColor="primary"
                 rounded={false}
                 widthFull={false}
-                onClick={() => {}}
               />
               <Button
                 buttonText="See Pricing"
                 buttonColor="secondinary"
                 rounded={false}
                 widthFull={false}
-                onClick={() => {}}
               />
             </div>
           </div>

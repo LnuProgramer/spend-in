@@ -131,7 +131,6 @@ function GetStartedSubscriptions({
               buttonText="Get Your Free Plan"
               rounded={false}
               widthFull={true}
-              onClick={() => {}}
             />
           </div>
         </>
@@ -257,7 +256,6 @@ function GetStartedSubscriptions({
               buttonText="Get Started"
               rounded={false}
               widthFull={true}
-              onClick={() => {}}
             />
           </div>
         </>
@@ -376,7 +374,6 @@ function GetStartedSubscriptions({
               buttonText="Get Started"
               rounded={false}
               widthFull={true}
-              onClick={() => {}}
             />
           </div>
         </>

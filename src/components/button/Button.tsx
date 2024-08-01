@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import "./ButtonStyle.scss";
+import smoothScrollTo from "../../SrcollAnimation";
 
 type ButtonProps = {
   buttonColor: string;
   buttonText: any;
   rounded: boolean;
   widthFull: boolean;
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 function Button({
@@ -23,7 +24,13 @@ function Button({
     setTimeout(() => {
       setIsFocused(false);
     }, 250);
-    onClick();
+    if (!onClick) {
+      if (buttonColor === "primary")
+        window.open("https://github.com/LnuProgramer");
+      else if (buttonColor === "secondinary") {
+        smoothScrollTo("get-started", 2000);
+      } else console.error("wrong buttonColor");
+    } else onClick();
   };
   return (
     <button

@@ -2,16 +2,19 @@
 
 .elipce {
   position: absolute;
-  width: 31.7361vw;
+  width: 49.583vw;
+  height: 49.583vw;
   pointer-events: none;
+  border-radius: 100%;
+  border: 6.944vw solid rgba($color: #ffffff, $alpha: 0.05);
 }
 
 #elipce-top-right {
-  top: 0;
-  right: 0;
+  top: -31.7355vw;
+  right: -31.7355vw;
 }
 
 #elipce-bottom-left {
-  bottom: 0;
-  left: 0;
+  bottom: -31.7355vw;
+  left: -31.7355vw;
 }

@@ -63,14 +63,12 @@ business expenses."
             buttonColor="primary"
             rounded={false}
             widthFull={false}
-            onClick={() => {}}
           />
           <Button
             buttonText="See Pricing"
             buttonColor="secondinary"
             rounded={false}
             widthFull={false}
-            onClick={() => {}}
           />
         </div>
       </div>

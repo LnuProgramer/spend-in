@@ -2,17 +2,23 @@
 
 .lighting {
   position: absolute;
-  pointer-events: none;
+  border-radius: 100%;
+  background: #ffffff;
+  opacity: 0.05;
+  border: 1px solid #ffffff;
+  filter: blur(100px);
 }
 
 #lighting-top-left {
-  width: 44.6527vw;
-  top: 0;
-  left: 0;
+  width: 61.5972vw;
+  height: 61.5972vw;
+  top: -30.7986vw;
+  left: -30.7986vw;
 }
 
 #lighting-bottom-right {
-  width: 47vw;
-  bottom: 0;
-  right: 0;
+  width: 67.1527vw;
+  height: 67.1527vw;
+  bottom: -33.57635vw;
+  right: -33.57635vw;
 }

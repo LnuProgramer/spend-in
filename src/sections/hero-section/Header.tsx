@@ -1,8 +1,21 @@
 import React from "react";
 import "./HeaderStyle.scss";
 import Button from "../../components/button/Button";
+import smoothScrollTo from "../../SrcollAnimation";
 
 function Header() {
+  const handleBenefitClick = () => {
+    smoothScrollTo("why-use-section-1", 2000);
+  };
+
+  const handleHowItWorksClick = () => {
+    smoothScrollTo("how-it-works-section-1", 2000);
+  };
+
+  const handlePricingClick = () => {
+    smoothScrollTo("get-started", 2000);
+  };
+
   return (
     <header>
       <div className="header-divs" id="header-div-left">
@@ -30,9 +43,9 @@ function Header() {
             />
           </svg>
         </nav>
-        <nav>Benefit</nav>
-        <nav>How it Works</nav>
-        <nav>Pricing</nav>
+        <nav onClick={handleBenefitClick}>Benefit</nav>
+        <nav onClick={handleHowItWorksClick}>How it Works</nav>
+        <nav onClick={handlePricingClick}>Pricing</nav>
         <nav className="drop-menu-nav">
           Company{" "}
           <svg
@@ -61,7 +74,6 @@ function Header() {
           buttonText="Get Demo"
           rounded={false}
           widthFull={false}
-          onClick={() => {}}
         />
       </div>
     </header>

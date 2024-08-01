@@ -38,7 +38,6 @@ function DownloadNow() {
         buttonText="Get a Free Demo"
         rounded={false}
         widthFull={false}
-        onClick={() => {}}
       />
 
       <img
