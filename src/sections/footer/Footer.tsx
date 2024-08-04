@@ -6,6 +6,7 @@ import SmallText from "../../components/sections-texts/SmallText";
 import FooterLinks from "./FooterLinks";
 import MediumSmallText from "../../components/sections-texts/MediumSmallText";
 import MediumText from "../../components/sections-texts/MediumText";
+import Button from "../../components/button/Button";
 
 const linkLists = {
   linkList1: [

@@ -144,6 +144,7 @@ function WhatTheySay() {
               src="images/vector/what-they-say/arrow-left.svg"
               alt="arrow-left"
               className="what-they-say-section-button-arrows"
+              id="arrow-left"
             />
           }
           buttonColor={counter > 0 ? "primary" : "secondinary"}
@@ -154,9 +155,10 @@ function WhatTheySay() {
         <Button
           buttonText={
             <img
-              src="images/vector/what-they-say/arrow-right.svg"
+              src="images/vector/what-they-say/arrow-left.svg"
               alt="arrow-right"
               className="what-they-say-section-button-arrows"
+              id="arrow-right"
             />
           }
           buttonColor={

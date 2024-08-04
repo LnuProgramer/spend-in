@@ -8,7 +8,7 @@ header {
   justify-content: space-between;
   align-items: center;
   color: #ffffff;
-  z-index: 1;
+  z-index: 5;
 }
 
 .header-divs {
@@ -40,16 +40,16 @@ header {
   font-weight: 500;
   line-height: 1.875vw;
   letter-spacing: -0.02em;
-}
 
-nav {
-  transition-property: scale, color;
-  transition: 0.25s ease-in-out;
+  a {
+    transition-property: scale, color;
+    transition: 0.25s ease-in-out;
 
-  &:hover {
-    cursor: pointer;
-    scale: 1.1;
-    color: $secondinary-light-200;
+    &:hover {
+      cursor: pointer;
+      scale: 1.1;
+      color: $secondinary-light-200;
+    }
   }
 }
 

@@ -22,8 +22,8 @@ function Header() {
         <img src="images/vector/header/logo.svg" id="logo" alt="logo" />
         <h1 id="product-name">Spend.In</h1>
       </div>
-      <div className="header-divs" id="header-div-center">
-        <nav className="drop-menu-nav">
+      <nav className="header-divs" id="header-div-center">
+        <a className="drop-menu-nav">
           Products{" "}
           <svg
             width="1.25vw"
@@ -42,11 +42,11 @@ function Header() {
               strokeLinejoin="round"
             />
           </svg>
-        </nav>
-        <nav onClick={handleBenefitClick}>Benefit</nav>
-        <nav onClick={handleHowItWorksClick}>How it Works</nav>
-        <nav onClick={handlePricingClick}>Pricing</nav>
-        <nav className="drop-menu-nav">
+        </a>
+        <a onClick={handleBenefitClick}>Benefit</a>
+        <a onClick={handleHowItWorksClick}>How it Works</a>
+        <a onClick={handlePricingClick}>Pricing</a>
+        <a className="drop-menu-nav">
           Company{" "}
           <svg
             width="1.25vw"
@@ -65,8 +65,8 @@ function Header() {
               strokeLinejoin="round"
             />
           </svg>
-        </nav>
-      </div>
+        </a>
+      </nav>
       <div className="header-divs" id="header-div-right">
         <h2 id="login-button">Login</h2>
         <Button

@@ -9,6 +9,7 @@ import IncreaseProductivity from "./sections/increase-productivity-section/Incre
 import WhatTheySay from "./sections/what-they-say-section/WhatTheySay";
 import WhyUse from "./sections/why-use-section/WhyUse";
 import DownloadNow from "./sections/download-now/DownloadNow";
+import ReturnButton from "./sections/return-button/ReturnButton";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <GetStarted />
       <DownloadNow />
       <Footer />
+      <ReturnButton />
     </div>
   );
 }

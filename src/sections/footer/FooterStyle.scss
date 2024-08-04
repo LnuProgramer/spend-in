@@ -53,4 +53,12 @@ footer {
   display: flex;
   align-items: center;
   gap: 2.22vw;
+
+  a {
+    transition: scale 0.25s ease-in-out;
+  }
+
+  a:hover {
+    scale: 1.1;
+  }
 }

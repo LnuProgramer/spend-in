@@ -4,10 +4,10 @@ import WhyUseSection2 from "./why-use-section-2/WhyUseSection2";
 
 function WhyUse() {
   return (
-    <div>
+    <>
       <WhyUseSection1 />
       <WhyUseSection2 />
-    </div>
+    </>
   );
 }
 
