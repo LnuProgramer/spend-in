@@ -22,26 +22,20 @@ function FooterLinks({ title, linksList }: FooterLinksProps) {
         fontSizeVw={1.33}
         lineHeightVw={2.083}
       />
-      <div className="footer-links">
+      <ul className="footer-links">
         {linksList.map((link, index) => (
-          <a href={link.href} key={index}>
-            <SmallText
-              text={link.text}
-              textColor="onWhiteBg"
-              fontSizeVw={1.11}
-              lineHeightVw={1.66}
-            />
-          </a>
+          <li key={index}>
+            <a href={link.href} key={index}>
+              <SmallText
+                text={link.text}
+                textColor="onWhiteBg"
+                fontSizeVw={1.11}
+                lineHeightVw={1.66}
+              />
+            </a>
+          </li>
         ))}
-        <a>
-          <SmallText
-            text=""
-            textColor="onWhiteBg"
-            fontSizeVw={1.11}
-            lineHeightVw={1.66}
-          />
-        </a>
-      </div>
+      </ul>
     </div>
   );
 }

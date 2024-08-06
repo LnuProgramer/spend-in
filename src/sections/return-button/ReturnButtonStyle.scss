@@ -1,9 +1,16 @@
-#return-button {
-  opacity: 0.6;
+#return-button-wrapper {
+  opacity: 0;
   z-index: 10;
   position: fixed;
   right: 2vw;
   bottom: 2vw;
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none;
+
+  &.show-button {
+    opacity: 0.6;
+    pointer-events: all;
+  }
 }
 
 #arrow-up {

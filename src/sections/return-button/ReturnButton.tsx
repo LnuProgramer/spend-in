@@ -16,25 +16,24 @@ function ReturnButton() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  return !isAtTop ? (
-    <Button
-      buttonColor="primary"
-      buttonText={
-        <img
-          src="images/vector/what-they-say/arrow-left.svg"
-          alt="arrow-up"
-          id="arrow-up"
-        />
-      }
-      rounded={true}
-      widthFull={false}
-      onClick={() => {
-        smoothScrollTo("hero-section", 2000);
-      }}
-      id="return-button"
-    />
-  ) : (
-    <></>
+  return (
+    <div id="return-button-wrapper" className={`${!isAtTop && "show-button"}`}>
+      <Button
+        buttonColor="primary"
+        buttonText={
+          <img
+            src="images/vector/what-they-say/arrow-left.svg"
+            alt="arrow-up"
+            id="arrow-up"
+          />
+        }
+        rounded={true}
+        widthFull={false}
+        onClick={() => {
+          smoothScrollTo("hero-section", 2000);
+        }}
+      />
+    </div>
   );
 }
 

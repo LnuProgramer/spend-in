@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import "./HeaderStyle.scss";
 import Button from "../../components/button/Button";
 import smoothScrollTo from "../../SrcollAnimation";
+import MediumSmallText from "../../components/sections-texts/MediumSmallText";
+import SmallText from "../../components/sections-texts/SmallText";
+import { idText } from "typescript";
 
 function Header() {
+  const [productsDropMenu, setProductsDropMenu] = useState(false);
+  const [companyDropMenu, setCompanyDropMenu] = useState(false);
+
+  const handleProductsDropMenu = () => {
+    setProductsDropMenu(!productsDropMenu);
+  };
+
+  const handleCompanyDropMenu = () => {
+    setCompanyDropMenu(!companyDropMenu);
+  };
+
   const handleBenefitClick = () => {
     smoothScrollTo("why-use-section-1", 2000);
   };
@@ -23,49 +37,195 @@ function Header() {
         <h1 id="product-name">Spend.In</h1>
       </div>
       <nav className="header-divs" id="header-div-center">
-        <a className="drop-menu-nav">
-          Products{" "}
-          <svg
-            width="1.25vw"
-            height="1.3194vw"
-            viewBox="0 0 18 19"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="arrow-down"
-          >
-            <path
-              d="M14.9401 7.2124L10.0501 12.1024C9.47256 12.6799 8.52756 12.6799 7.95006 12.1024L3.06006 7.2124"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeMiterlimit="10"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+        <div className="drop-menu-wrapper">
+          <div className="drop-menu" onClick={handleProductsDropMenu}>
+            <MediumSmallText
+              text="Products"
+              textColor="white"
+              fontSizeVw={1.25}
+              lineHeightVw={1.875}
             />
-          </svg>
-        </a>
-        <a onClick={handleBenefitClick}>Benefit</a>
-        <a onClick={handleHowItWorksClick}>How it Works</a>
-        <a onClick={handlePricingClick}>Pricing</a>
-        <a className="drop-menu-nav">
-          Company{" "}
-          <svg
-            width="1.25vw"
-            height="1.3194vw"
-            viewBox="0 0 18 19"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="arrow-down"
+
+            <svg
+              width="1.25vw"
+              height="1.3194vw"
+              viewBox="0 0 18 19"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="arrow-down"
+            >
+              <path
+                d="M14.9401 7.2124L10.0501 12.1024C9.47256 12.6799 8.52756 12.6799 7.95006 12.1024L3.06006 7.2124"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeMiterlimit="10"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+          <ul
+            className={`menu ${productsDropMenu && "show-menu"}`}
+            id="products-menu"
           >
-            <path
-              d="M14.9401 7.2124L10.0501 12.1024C9.47256 12.6799 8.52756 12.6799 7.95006 12.1024L3.06006 7.2124"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeMiterlimit="10"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+            <li>
+              <a href="">
+                <SmallText
+                  text="Digital Invoice"
+                  textColor="onBlackBg"
+                  fontSizeVw={1.11}
+                  lineHeightVw={1.66}
+                />
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <SmallText
+                  text="Insights"
+                  textColor="onBlackBg"
+                  fontSizeVw={1.11}
+                  lineHeightVw={1.66}
+                />
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <SmallText
+                  text="Reimbursements"
+                  textColor="onBlackBg"
+                  fontSizeVw={1.11}
+                  lineHeightVw={1.66}
+                />
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <SmallText
+                  text="Virtual Assistant"
+                  textColor="onBlackBg"
+                  fontSizeVw={1.11}
+                  lineHeightVw={1.66}
+                />
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <SmallText
+                  text="Artificial Intelligence"
+                  textColor="onBlackBg"
+                  fontSizeVw={1.11}
+                  lineHeightVw={1.66}
+                />
+              </a>
+            </li>
+          </ul>
+        </div>
+        <a onClick={handleBenefitClick} className="header-div-center-a">
+          <MediumSmallText
+            text="Benefit"
+            textColor="white"
+            fontSizeVw={1.25}
+            lineHeightVw={1.875}
+          />
         </a>
+        <a onClick={handleHowItWorksClick} className="header-div-center-a">
+          <MediumSmallText
+            text="How it Works"
+            textColor="white"
+            fontSizeVw={1.25}
+            lineHeightVw={1.875}
+          />
+        </a>
+        <a onClick={handlePricingClick} className="header-div-center-a">
+          <MediumSmallText
+            text="Pricing"
+            textColor="white"
+            fontSizeVw={1.25}
+            lineHeightVw={1.875}
+          />
+        </a>
+        <div className="drop-menu-div">
+          <div className="drop-menu" onClick={handleCompanyDropMenu}>
+            <MediumSmallText
+              text="Company"
+              textColor="white"
+              fontSizeVw={1.25}
+              lineHeightVw={1.875}
+            />
+            <svg
+              width="1.25vw"
+              height="1.3194vw"
+              viewBox="0 0 18 19"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="arrow-down"
+            >
+              <path
+                d="M14.9401 7.2124L10.0501 12.1024C9.47256 12.6799 8.52756 12.6799 7.95006 12.1024L3.06006 7.2124"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeMiterlimit="10"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+          <ul
+            className={`menu ${companyDropMenu && "show-menu"}`}
+            id="company-menu"
+          >
+            <li>
+              <a href="">
+                <SmallText
+                  text="About Us"
+                  textColor="onBlackBg"
+                  fontSizeVw={1.11}
+                  lineHeightVw={1.66}
+                />
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <SmallText
+                  text="Newsletters"
+                  textColor="onBlackBg"
+                  fontSizeVw={1.11}
+                  lineHeightVw={1.66}
+                />
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <SmallText
+                  text="Our Partners"
+                  textColor="onBlackBg"
+                  fontSizeVw={1.11}
+                  lineHeightVw={1.66}
+                />
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <SmallText
+                  text="Career"
+                  textColor="onBlackBg"
+                  fontSizeVw={1.11}
+                  lineHeightVw={1.66}
+                />
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <SmallText
+                  text="Contact Us"
+                  textColor="onBlackBg"
+                  fontSizeVw={1.11}
+                  lineHeightVw={1.66}
+                />
+              </a>
+            </li>
+          </ul>
+        </div>
       </nav>
       <div className="header-divs" id="header-div-right">
         <h2 id="login-button">Login</h2>

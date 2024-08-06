@@ -6,13 +6,20 @@
 }
 
 .footer-links {
+  list-style: none;
   display: flex;
   flex-direction: column;
   gap: 1.66vw;
 
-  a {
+  li {
     width: fit-content;
+  }
+
+  a {
     text-decoration: none;
+    p {
+      transition: color 0.25s ease-in-out;
+    }
 
     &:hover {
       p {

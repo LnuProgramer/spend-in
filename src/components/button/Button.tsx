@@ -8,7 +8,6 @@ type ButtonProps = {
   rounded: boolean;
   widthFull: boolean;
   onClick?: () => void;
-  id?: string;
 };
 
 function Button({
@@ -17,7 +16,6 @@ function Button({
   rounded,
   widthFull,
   onClick,
-  id,
 }: ButtonProps) {
   const [isFocused, setIsFocused] = useState(false);
 
@@ -39,7 +37,6 @@ function Button({
       className={`main-button ${buttonColor} ${
         isFocused ? "focus-temporary" : ""
       }`}
-      id={id}
       type="button"
       onClick={handleonClick}
       style={{

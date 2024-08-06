@@ -6,94 +6,93 @@ import SmallText from "../../components/sections-texts/SmallText";
 import FooterLinks from "./FooterLinks";
 import MediumSmallText from "../../components/sections-texts/MediumSmallText";
 import MediumText from "../../components/sections-texts/MediumText";
-import Button from "../../components/button/Button";
 
 const linkLists = {
   linkList1: [
     {
-      href: "#",
+      href: "",
       text: "Digital Invoice",
     },
     {
-      href: "#",
+      href: "",
       text: "Insights",
     },
     {
-      href: "#",
+      href: "",
       text: "Reimbursements",
     },
     {
-      href: "#",
+      href: "",
       text: "Virtual Assistant",
     },
     {
-      href: "#",
+      href: "",
       text: "Artificial Intelligence",
     },
   ],
   linkList2: [
     {
-      href: "#",
+      href: "",
       text: "About Us",
     },
     {
-      href: "#",
+      href: "",
       text: "Newsletters",
     },
     {
-      href: "#",
+      href: "",
       text: "Our Partners",
     },
     {
-      href: "#",
+      href: "",
       text: "Career",
     },
     {
-      href: "#",
+      href: "",
       text: "Contact Us",
     },
   ],
   linkList3: [
     {
-      href: "#",
+      href: "",
       text: "Blog",
     },
     {
-      href: "#",
+      href: "",
       text: "Pricing",
     },
     {
-      href: "#",
+      href: "",
       text: "FAQ",
     },
     {
-      href: "#",
+      href: "",
       text: "Events",
     },
     {
-      href: "#",
+      href: "",
       text: "Ebook & Guide",
     },
   ],
   linkList4: [
     {
-      href: "#",
+      href: "",
       text: "LinkedIn",
     },
     {
-      href: "#",
+      href: "",
       text: "Twitter",
     },
     {
-      href: "#",
+      href: "",
       text: "Instagram",
     },
     {
-      href: "#",
+      href: "",
       text: "Facebook",
     },
     {
-      href: "#",
+      href: "",
       text: "YouTube",
     },
   ],
@@ -135,7 +134,7 @@ for your business."
       </div>
       <footer>
         <div id="footer-terms-and-condition">
-          <a href="#">
+          <a href="">
             <MediumText
               text="Privacy Policy"
               textColor="black"
@@ -149,7 +148,7 @@ for your business."
             fontSizeVw={1.25}
             lineHeightVw={1.875}
           />
-          <a href="#">
+          <a href="">
             <MediumText
               text="Terms & Conditions"
               textColor="black"
@@ -163,7 +162,7 @@ for your business."
             fontSizeVw={1.25}
             lineHeightVw={1.875}
           />
-          <a href="#">
+          <a href="">
             <MediumText
               text="Cookie Policy"
               textColor="black"
