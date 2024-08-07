@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./HeaderStyle.scss";
 import Button from "../../components/button/Button";
 import smoothScrollTo from "../../SrcollAnimation";
 import MediumSmallText from "../../components/sections-texts/MediumSmallText";
 import SmallText from "../../components/sections-texts/SmallText";
-import { idText } from "typescript";
 
 function Header() {
   const [productsDropMenu, setProductsDropMenu] = useState(false);
   const [companyDropMenu, setCompanyDropMenu] = useState(false);
+
+  const productsMenuRef = useRef<HTMLUListElement>(null);
+  const companyMenuRef = useRef<HTMLUListElement>(null);
 
   const handleProductsDropMenu = () => {
     setProductsDropMenu(!productsDropMenu);
@@ -30,6 +32,26 @@ function Header() {
     smoothScrollTo("get-started", 2000);
   };
 
+  const handleClickOutside = (event: Event) => {
+    if (
+      (productsDropMenu || companyDropMenu) && // Check at least one menu is open
+      productsMenuRef.current &&
+      !productsMenuRef.current.contains(event.target as HTMLElement) &&
+      companyMenuRef.current &&
+      !companyMenuRef.current.contains(event.target as HTMLElement)
+    ) {
+      setProductsDropMenu(false);
+      setCompanyDropMenu(false);
+      console.log("awdwad");
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, [productsDropMenu, companyDropMenu]);
+
   return (
     <header>
       <div className="header-divs" id="header-div-left">
@@ -38,7 +60,13 @@ function Header() {
       </div>
       <nav className="header-divs" id="header-div-center">
         <div className="drop-menu-wrapper">
-          <div className="drop-menu" onClick={handleProductsDropMenu}>
+          <div
+            className="drop-menu"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleProductsDropMenu();
+            }}
+          >
             <MediumSmallText
               text="Products"
               textColor="white"
@@ -65,6 +93,7 @@ function Header() {
             </svg>
           </div>
           <ul
+            ref={productsMenuRef}
             className={`menu ${productsDropMenu && "show-menu"}`}
             id="products-menu"
           >
@@ -145,7 +174,13 @@ function Header() {
           />
         </a>
         <div className="drop-menu-div">
-          <div className="drop-menu" onClick={handleCompanyDropMenu}>
+          <div
+            className="drop-menu"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleCompanyDropMenu();
+            }}
+          >
             <MediumSmallText
               text="Company"
               textColor="white"
@@ -171,6 +206,7 @@ function Header() {
             </svg>
           </div>
           <ul
+            ref={companyMenuRef}
             className={`menu ${companyDropMenu && "show-menu"}`}
             id="company-menu"
           >

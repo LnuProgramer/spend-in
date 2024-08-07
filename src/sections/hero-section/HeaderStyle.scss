@@ -93,7 +93,10 @@ header {
 }
 
 .menu {
-  background-color: $secondinary-dark-900;
+  z-index: -1;
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  background-color: rgba($color: $secondinary-dark-900, $alpha: 0.2);
   padding: 1vw;
   border-radius: 0.9722vw;
   display: flex;
@@ -127,10 +130,10 @@ header {
     opacity: 1;
     pointer-events: all;
     &#products-menu {
-      transform: translate(-2.6892vw, 7.944vw);
+      transform: translate(-2.6892vw, 7.44vw);
     }
     &#company-menu {
-      transform: translate(-0.9216vw, 7.944vw);
+      transform: translate(-0.9216vw, 7.44vw);
     }
   }
 
