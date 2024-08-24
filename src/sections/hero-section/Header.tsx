@@ -42,7 +42,6 @@ function Header() {
     ) {
       setProductsDropMenu(false);
       setCompanyDropMenu(false);
-      console.log("awdwad");
     }
   };
 
@@ -80,7 +79,7 @@ function Header() {
               viewBox="0 0 18 19"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="arrow-down"
+              className={`arrow-down ${productsDropMenu && "up"}`}
             >
               <path
                 d="M14.9401 7.2124L10.0501 12.1024C9.47256 12.6799 8.52756 12.6799 7.95006 12.1024L3.06006 7.2124"
@@ -193,7 +192,7 @@ function Header() {
               viewBox="0 0 18 19"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="arrow-down"
+              className={`arrow-down ${companyDropMenu && "up"}`}
             >
               <path
                 d="M14.9401 7.2124L10.0501 12.1024C9.47256 12.6799 8.52756 12.6799 7.95006 12.1024L3.06006 7.2124"
@@ -264,7 +263,14 @@ function Header() {
         </div>
       </nav>
       <div className="header-divs" id="header-div-right">
-        <h2 id="login-button">Login</h2>
+        <a href="" id="login-button">
+          <MediumSmallText
+            text="Login"
+            textColor="white-gray"
+            fontSizeVw={1.25}
+            lineHeightVw={1.875}
+          />
+        </a>
         <Button
           buttonColor="primary"
           buttonText="Get Demo"

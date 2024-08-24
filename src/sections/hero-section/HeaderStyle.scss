@@ -39,7 +39,8 @@ header {
   .header-div-center-a {
     h3 {
       transition-property: scale, color;
-      transition: 0.25s ease-in-out;
+      transition-duration: 0.25s;
+      transition-timing-function: ease-in-out;
     }
 
     &:hover {
@@ -59,7 +60,8 @@ header {
   &:hover {
     .arrow-down path {
       transition-property: scale, color;
-      transition: 0.25s ease-in-out;
+      transition-duration: 0.25s;
+      transition-timing-function: ease-in-out;
       stroke: $secondinary-light-200;
     }
   }
@@ -72,11 +74,19 @@ header {
   gap: 0.416vw;
   transition: scale 0.25s ease-in-out;
 
+  .arrow-down {
+    transition: transform 0.5s ease-in-out;
+  }
+
   .arrow-down path {
     transition: stroke 0.25s ease-in-out;
   }
   h3 {
     transition: color 0.25s ease-in-out;
+  }
+
+  .up {
+    transform: rotate(180deg);
   }
 
   &:hover {
@@ -94,9 +104,7 @@ header {
 
 .menu {
   z-index: -1;
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
-  background-color: rgba($color: $secondinary-dark-900, $alpha: 0.2);
+  background: linear-gradient($secondinary-dark-900, $secondinary-dark-600);
   padding: 1vw;
   border-radius: 0.9722vw;
   display: flex;
@@ -111,8 +119,9 @@ header {
   opacity: 0;
   pointer-events: none;
   list-style: none;
-  transition-property: opacity transform;
-  transition: 0.5s ease-in-out;
+  transition-property: opacity, transform;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in-out;
 
   &#products-menu {
     transform: translateX(-2.6892vw);
@@ -156,30 +165,20 @@ header {
   }
 }
 
-@keyframes pointer-events-delay {
-  from {
-    pointer-events: none;
-  }
-  to {
-    pointer-events: all;
-  }
-}
-
 #header-div-right {
   gap: 2.22vw;
   margin-right: 8.33vw;
 }
 
 #login-button {
-  font-size: 1.25vw;
-  font-weight: 500;
-  line-height: 1.875vw;
-  letter-spacing: -0.02em;
-  color: $secondinary-light-200;
-  transition-property: scale, color;
-  transition: 0.25s ease-in-out;
+  text-decoration: none;
+  h3 {
+    transition-property: scale, color;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-in-out;
+  }
 
-  &:hover {
+  h3:hover {
     cursor: pointer;
     scale: 1.1;
     color: $secondinary-light-100;

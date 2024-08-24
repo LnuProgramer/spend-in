@@ -20,4 +20,8 @@
   &.gray {
     @include text-color($secondinary-light-400);
   }
+
+  &.white-gray {
+    @include text-color($secondinary-light-200);
+  }
 }

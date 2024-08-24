@@ -35,7 +35,8 @@
 
   &::before {
     transition-property: width, transform;
-    transition: 0.5s ease-in-out;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
     position: absolute;
     content: "";
     left: 0.1388vw;
