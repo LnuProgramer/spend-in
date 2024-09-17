@@ -1,0 +1,41 @@
+GET http://localhost:8000/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkYXdkYXdkIiwiaWF0IjoxNzI1NjQ2MjA4LCJleHAiOjE3MjU2NDYyMjh9.TeO3HzRbq2t5nIFyG_PD0XClhZXUOoYSRrwlCcvmUMU
+
+###
+
+POST http://localhost:8000/user
+Content-Type: application/json
+
+{
+  "username": "adawdawd",
+  "email": "test@test.test",
+  "password": "test123"
+}
+
+### 
+
+POST http://localhost:8000/token
+Content-Type: application/json
+
+{
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJyYSIsImlhdCI6MTcyNTYyMzAzMX0.QRxaEDG3NJf25IwEppK80mPDAKBB05PGEpnOWv4d7J4"
+}
+
+###
+
+DELETE http://localhost:8000/logout
+Content-Type: application/json
+
+{
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkYXdkYXdkIiwiaWF0IjoxNzI1NzI3NjQwfQ.8AINZjVh9AbkH-xHyVpZ-VqoU5kvgU_TrFGqf5GVZ-c"
+}
+
+###
+
+POST http://localhost:8000/user/login
+Content-Type: application/json
+
+{
+  "username": "adawdawd",
+  "password": "test123"
+}
