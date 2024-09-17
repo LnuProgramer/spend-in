@@ -3,7 +3,7 @@
 /client/.pnp
 /client.pnp.js
 /server/node_modules
-.idea
+/.idea
 
 # testing
 /client/coverage
