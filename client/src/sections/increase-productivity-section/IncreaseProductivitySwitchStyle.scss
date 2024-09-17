@@ -48,8 +48,7 @@
   }
 }
 
-#increase-productivity-checkbox:checked
-  + #increase-productivity-slider::before {
+#increase-productivity-checkbox:checked + #increase-productivity-slider::before {
   transform: translateX(11.7361vw);
   width: 13.5416vw;
 }

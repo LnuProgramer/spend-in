@@ -10,23 +10,23 @@ import WhatTheySay from "./sections/what-they-say-section/WhatTheySay";
 import WhyUse from "./sections/why-use-section/WhyUse";
 import DownloadNow from "./sections/download-now/DownloadNow";
 import ReturnButton from "./sections/return-button/ReturnButton";
-import LoginWindow from "./sections/login-window/LoginWindow";
+import RegistrationLogin from "./sections/login-window/RegistrationLogin";
 
 function App() {
-  return (
-    <div className="App">
-      <HeroSection />
-      <WhyUse />
-      <HowItWorks />
-      <IncreaseProductivity />
-      <WhatTheySay />
-      <GetStarted />
-      <DownloadNow />
-      <Footer />
-      <ReturnButton />
-      <LoginWindow />
-    </div>
-  );
+    return (
+        <div className="App">
+            <HeroSection/>
+            <WhyUse/>
+            <HowItWorks/>
+            <IncreaseProductivity/>
+            <WhatTheySay/>
+            <GetStarted/>
+            <DownloadNow/>
+            <Footer/>
+            <ReturnButton/>
+            <RegistrationLogin/>
+        </div>
+    );
 }
 
 export default App;

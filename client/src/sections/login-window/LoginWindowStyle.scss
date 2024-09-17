@@ -1,6 +1,6 @@
 @import "../../Colors.scss";
 
-#login-window-section {
+#registration-login-section {
   position: fixed;
   display: flex;
   justify-content: center;
@@ -14,7 +14,7 @@
   z-index: 10;
 }
 
-#login-registration-window-wrapper {
+#registration-login-section-wrapper {
   position: relative;
   padding-top: 3vw;
   width: 44.44vw;
@@ -25,7 +25,7 @@
   overflow: hidden;
 }
 
-.login-registration-window-swapper {
+.registration-login-section-swapper {
   width: 100%;
   height: 100%;
   transform: translateX(0);
@@ -46,6 +46,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+
   &.on-screen {
     opacity: 1;
   }
@@ -56,9 +57,10 @@
   left: 44.44vw;
   top: 0;
   height: 90%;
+  gap: 2vw;
 }
 
-.login-window-cross-img {
+#registration-login-cross-img {
   position: absolute;
   right: 1.2vw;
   top: 1.2vw;
@@ -66,19 +68,20 @@
   width: 2vw;
   transition: scale 0.25s ease-in-out;
   color: #ffffff;
+
   &:hover {
     scale: 1.2;
     cursor: pointer;
   }
 }
 
-#login-window-create-account {
+.registration-and-login-block-switch-text {
   display: flex;
   align-items: center;
   gap: 0.5vw;
 }
 
-.login-window-block {
+.registration-and-login-block {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -87,7 +90,7 @@
   gap: 0.833vw;
 }
 
-#login-window-inputs-block {
+.registration-and-login-inputs-block {
   gap: 2vw;
 
   button {
@@ -96,7 +99,7 @@
   }
 }
 
-.login-window-block-input-wrapper {
+.registration-and-login-input-wrapper {
   display: flex;
   flex-direction: column-reverse;
   justify-content: start;
@@ -106,11 +109,11 @@
     transform: translateY(90%);
     width: fit-content;
     pointer-events: none;
-    transition-property: color transform;
+    transition-property: color, transform;
     transition: 0.35s ease-in-out;
   }
 
-  .login-window-input-icon {
+  .registration-and-login-input-icon {
     position: absolute;
     right: 7.5vw;
     width: 1.43vw;
@@ -120,6 +123,7 @@
     transition: color 0.35s ease-in-out;
     cursor: pointer;
   }
+
   input {
     box-sizing: border-box;
     background-color: transparent;
@@ -140,10 +144,12 @@
     &:not(:placeholder-shown) ~ h3 {
       transform: translateY(-10%);
     }
+
     &:not(:placeholder-shown) {
       &:not(:valid) {
         border-bottom: 0.138vw solid rgb(255, 70, 70);
       }
+
       &:not(:valid) ~ h3,
       &:not(:valid) ~ .login-window-input-icon {
         color: rgb(255, 70, 70);
@@ -167,9 +173,11 @@
 
 a {
   text-decoration: none;
+
   p {
     text-decoration: underline;
     transition: color 0.25s ease-in-out;
+
     &:hover {
       color: $secondinary-light-200 !important;
       cursor: pointer;

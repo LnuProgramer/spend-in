@@ -36,6 +36,7 @@ header {
 
 #header-div-center {
   gap: 2.77vw;
+
   .header-div-center-a {
     h3 {
       transition-property: scale, color;
@@ -57,6 +58,7 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
+
   &:hover {
     .arrow-down path {
       transition-property: scale, color;
@@ -81,6 +83,7 @@ header {
   .arrow-down path {
     transition: stroke 0.25s ease-in-out;
   }
+
   h3 {
     transition: color 0.25s ease-in-out;
   }
@@ -92,6 +95,7 @@ header {
   &:hover {
     cursor: pointer;
     scale: 1.1;
+
     .arrow-down path {
       stroke: $secondinary-light-200;
     }
@@ -112,8 +116,6 @@ header {
   gap: 1vw;
   position: absolute;
   top: 0;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   opacity: 0;
@@ -138,9 +140,11 @@ header {
   &.show-menu {
     opacity: 1;
     pointer-events: all;
+
     &#products-menu {
       transform: translate(-2.6892vw, 7.44vw);
     }
+
     &#company-menu {
       transform: translate(-0.9216vw, 7.44vw);
     }
@@ -172,6 +176,7 @@ header {
 
 #login-button {
   text-decoration: none;
+
   h3 {
     transition-property: scale, color;
     transition-duration: 0.25s;
