@@ -16,10 +16,22 @@ const express_1 = __importDefault(require("express"));
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const dotenv_1 = __importDefault(require("dotenv"));
+const typeorm_1 = require("typeorm");
+require("reflect-metadata");
+const User_1 = require("./Entities/User");
 dotenv_1.default.config();
 const port = 8000;
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
+(0, typeorm_1.createConnection)({
+    type: "mysql",
+    database: process.env.DATABASE_NAME,
+    username: process.env.DATABASE_USERNAME,
+    password: process.env.DATABASE_PASSWORD,
+    logging: true,
+    synchronize: true,
+    entities: [User_1.User]
+});
 let users = [
     {
         username: "test",
@@ -28,6 +40,7 @@ let users = [
     },
 ];
 app.get("/user", authenticateToken, (req, res) => {
+    // @ts-ignore
     res.json(users.filter((user) => user.username === req.user.username));
 });
 function authenticateToken(req, res, next) {
@@ -41,6 +54,7 @@ function authenticateToken(req, res, next) {
     jsonwebtoken_1.default.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
         if (err)
             return res.sendStatus(403);
+        // @ts-ignore
         req.user = user;
         next();
     });
@@ -92,6 +106,7 @@ app.post("/user/login", (req, res) => __awaiter(void 0, void 0, void 0, function
             }
             const accessToken = jsonwebtoken_1.default.sign({ username: user.username }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "20s" });
             const refreshToken = jsonwebtoken_1.default.sign({ username: user.username }, process.env.REFRESH_TOKEN_SECRET);
+            refreshTokens.push(refreshToken);
             res.json({ accessToken: accessToken, refreshToken: refreshToken });
             res.status(202);
         }
@@ -109,4 +124,9 @@ function generateAccessToken(user, res) {
     }
     return jsonwebtoken_1.default.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "20s" });
 }
-app.listen(port, () => { });
+app.delete("/logout", (req, res) => {
+    refreshTokens = refreshTokens.filter((refreshToken) => refreshToken !== req.body.refreshToken);
+    res.sendStatus(204);
+});
+app.listen(port, () => {
+});

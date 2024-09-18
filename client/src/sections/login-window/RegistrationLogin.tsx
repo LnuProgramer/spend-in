@@ -3,6 +3,7 @@ import RegistrationWindow from "./RegistrationWindow";
 import "./LoginWindowStyle.scss";
 import {AiOutlineClose} from "react-icons/ai";
 import React, {useEffect, useState} from "react";
+import axios from "axios";
 
 function RegistrationLogin() {
     const [isSwapped, setIsSwapped] = useState(false);

@@ -1,7 +1,10 @@
-import express, {Response, Request} from "express";
+import express, { Response, Request } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import { createConnection } from "typeorm"
+import "reflect-metadata"
+import { User } from "./Entities/User";
 
 dotenv.config();
 
@@ -9,6 +12,17 @@ dotenv.config();
 const port = 8000;
 const app = express();
 app.use(express.json());
+
+createConnection({
+    type: "mysql",
+    database: process.env.DATABASE_NAME,
+    username: process.env.DATABASE_USERNAME,
+    password: process.env.DATABASE_PASSWORD,
+    logging: true,
+    synchronize: true,
+    entities: [User]
+});
+
 
 let users = [
     {
