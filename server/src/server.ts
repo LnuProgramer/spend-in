@@ -1,53 +1,67 @@
 import express, { Response, Request } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { DataSource } from "typeorm";
+import "reflect-metadata";
 import dotenv from "dotenv";
-import { createConnection } from "typeorm"
-import "reflect-metadata"
 import { User } from "./Entities/User";
 
 dotenv.config();
-
 
 const port = 8000;
 const app = express();
 app.use(express.json());
 
-createConnection({
+dotenv.config();
+
+const AppDataSource = new DataSource({
     type: "mysql",
     database: process.env.DATABASE_NAME,
     username: process.env.DATABASE_USERNAME,
     password: process.env.DATABASE_PASSWORD,
     logging: true,
     synchronize: true,
-    entities: [User]
+    entities: [User],
 });
 
+AppDataSource.initialize()
+    .catch((err) => {
+        console.error("Error during Data Source initialization:", err);
+    });
 
-let users = [
-    {
-        username: "test",
-        email: "$2b$10$spQbk.yOgomdhO3tog6Wv.KQquxtggK//3bt47s3figoY3IuwHJHG",
-        password: "$2b$10$ZhpV0hze1XmIuxkfMiay4.aMcW3ZOujlDGM5DYb01LH1eHA3i4f72",
-    },
-];
 
-app.get("/user", authenticateToken, (req, res) => {
-    // @ts-ignore
-    res.json(users.filter((user) => user.username === req.user.username));
+app.get("/user", authenticateToken, async (req, res) => {
+
+    try {
+        const user = await User.findOneBy({
+            // @ts-ignore
+            userName: req.user.userName,
+            // @ts-ignore
+            email: req.user.email,
+        });
+
+        if (!user)
+            return res.status(400).send("User not found");
+
+        res.json(user);
+
+    } catch (error) {
+        res.status(500).send("Server error");
+    }
 });
+
 
 function authenticateToken(req: Request, res: Response, next: Function) {
     const authHeader = req.headers["authorization"];
-    const token =
-        typeof authHeader === "string" ? authHeader.split(" ")[1] : null;
-    if (token == null) return res.sendStatus(401);
+    const token = typeof authHeader === "string" ? authHeader.split(" ")[1] : null;
+    if (!token) return res.sendStatus(401);
 
     if (!process.env.ACCESS_TOKEN_SECRET) {
         return res.status(500).send("Missing access token secret");
     }
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err: any, user: any) => {
         if (err) return res.sendStatus(403);
+        if (!user) return res.sendStatus(403);
         // @ts-ignore
         req.user = user;
         next();
@@ -59,13 +73,11 @@ app.post("/user", async (req, res) => {
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         const hashedEmail = await bcrypt.hash(req.body.email, 10);
 
-        const user = {
-            username: req.body.username,
+        await User.insert({
+            userName: req.body.userName,
             email: hashedEmail,
             password: hashedPassword,
-        };
-
-        users.push(user);
+        })
         res.status(201).send();
     } catch {
         res.status(500).send("Error creating user");
@@ -76,23 +88,28 @@ let refreshTokens: any = [];
 
 app.post("/token", (req, res) => {
     let refreshToken = req.body.refreshToken;
-    if (refreshToken == null) return res.sendStatus(401);
+    if (!refreshToken) return res.sendStatus(401);
     if (!refreshTokens.includes(refreshToken)) return res.sendStatus(403);
     if (!process.env.REFRESH_TOKEN_SECRET)
         return res.sendStatus(500).send("Missing refresh token secret");
+
     jwt.verify(
         refreshToken,
         process.env.REFRESH_TOKEN_SECRET,
         (err: any, user: any) => {
             if (err) return res.sendStatus(403);
-            const accessToken = generateAccessToken({name: user.username}, res);
+            if (!user) return res.sendStatus(403);
+            const accessToken = generateAccessToken({name: user.userName}, res);
             res.json({accessToken: accessToken});
         }
     );
 });
 
 app.post("/user/login", async (req, res) => {
-    const user = users.find((user) => user.username === req.body.username);
+    const user = await User.findOneBy({
+        userName: req.body.userName,
+        email: req.body.email,
+    });
     if (!user) {
         return res.status(400).send("Cannot find user");
     }
@@ -108,12 +125,12 @@ app.post("/user/login", async (req, res) => {
             }
 
             const accessToken = jwt.sign(
-                {username: user.username},
+                {userName: user.userName},
                 process.env.ACCESS_TOKEN_SECRET,
                 {expiresIn: "20s"}
             );
             const refreshToken = jwt.sign(
-                {username: user.username},
+                {userName: user.userName},
                 process.env.REFRESH_TOKEN_SECRET
             );
             refreshTokens.push(refreshToken);
