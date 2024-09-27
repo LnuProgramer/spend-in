@@ -1,10 +1,11 @@
 import LargeText from "../../components/sections-texts/LargeText";
 import SmallText from "../../components/sections-texts/SmallText";
-import {FaLock, FaUnlock, FaUser} from "react-icons/fa";
+import { FaLock, FaUnlock, FaUser } from "react-icons/fa";
 import MediumSmallText from "../../components/sections-texts/MediumSmallText";
-import {MdEmail} from "react-icons/md";
+import { MdEmail } from "react-icons/md";
 import Button from "../../components/button/Button";
 import React from "react";
+import axios from "axios";
 
 interface RegistrationWindowProps {
     userName: string

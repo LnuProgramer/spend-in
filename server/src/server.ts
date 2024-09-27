@@ -5,14 +5,13 @@ import { DataSource } from "typeorm";
 import "reflect-metadata";
 import dotenv from "dotenv";
 import { User } from "./Entities/User";
+import { RefreshToken } from "./Entities/RefreshToken";
 
 dotenv.config();
 
 const port = 8000;
 const app = express();
 app.use(express.json());
-
-dotenv.config();
 
 const AppDataSource = new DataSource({
     type: "mysql",
@@ -21,35 +20,13 @@ const AppDataSource = new DataSource({
     password: process.env.DATABASE_PASSWORD,
     logging: true,
     synchronize: true,
-    entities: [User],
+    entities: [User, RefreshToken],
 });
 
 AppDataSource.initialize()
-    .catch((err) => {
-        console.error("Error during Data Source initialization:", err);
+    .catch((error) => {
+        console.error("Error during Data Source initialization:", error);
     });
-
-
-app.get("/user", authenticateToken, async (req, res) => {
-
-    try {
-        const user = await User.findOneBy({
-            // @ts-ignore
-            userName: req.user.userName,
-            // @ts-ignore
-            email: req.user.email,
-        });
-
-        if (!user)
-            return res.status(400).send("User not found");
-
-        res.json(user);
-
-    } catch (error) {
-        res.status(500).send("Server error");
-    }
-});
-
 
 function authenticateToken(req: Request, res: Response, next: Function) {
     const authHeader = req.headers["authorization"];
@@ -68,28 +45,70 @@ function authenticateToken(req: Request, res: Response, next: Function) {
     });
 }
 
-app.post("/user", async (req, res) => {
-    try {
-        const hashedPassword = await bcrypt.hash(req.body.password, 10);
-        const hashedEmail = await bcrypt.hash(req.body.email, 10);
+function generateAccessToken(user: any, res: Response) {
+    if (!process.env.ACCESS_TOKEN_SECRET) {
+        return res.status(500).send("Missing access token secret");
+    }
 
-        await User.insert({
-            userName: req.body.userName,
-            email: hashedEmail,
-            password: hashedPassword,
-        })
-        res.status(201).send();
-    } catch {
-        res.status(500).send("Error creating user");
+    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "15m"});
+}
+
+function generateRefreshToken(user: any, res: Response) {
+    if (!process.env.REFRESH_TOKEN_SECRET) {
+        res.status(500).send("Missing refresh token secret");
+        return;
+    }
+    return jwt.sign(user, process.env.REFRESH_TOKEN_SECRET, {expiresIn: "15d"});
+}
+
+
+app.get("/user", authenticateToken, async (req, res) => {
+    try {
+        const user = await User.findOneBy({
+            // @ts-ignore
+            userName: req.user.userName,
+            // @ts-ignore
+            email: req.user.email,
+        });
+
+        if (!user)
+            return res.status(400).send("User not found");
+
+        res.status(200).json(user);
+
+    } catch (error) {
+        res.status(500).send("Server error" + error);
     }
 });
 
-let refreshTokens: any = [];
+app.post("/user", async (req, res) => {
+    try {
+        let user = await User.findOneBy({userName: req.body.userName})
+        let email = await User.findOneBy({email: req.body.email})
+        if (user)
+            return res.status(400).send("User already exists");
+        if (email)
+            return res.status(400).send("Email already exists");
 
-app.post("/token", (req, res) => {
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+        await User.insert({
+            userName: req.body.userName,
+            email: req.body.email,
+            password: hashedPassword,
+        })
+        res.status(201).send();
+    } catch (error) {
+        res.status(500).send("Error creating user" + error);
+    }
+});
+
+app.post("/token", async (req, res) => {
     let refreshToken = req.body.refreshToken;
+
     if (!refreshToken) return res.sendStatus(401);
-    if (!refreshTokens.includes(refreshToken)) return res.sendStatus(403);
+    let token = await RefreshToken.findOneBy({refreshToken: refreshToken});
+    if (!token) return res.sendStatus(403);
     if (!process.env.REFRESH_TOKEN_SECRET)
         return res.sendStatus(500).send("Missing refresh token secret");
 
@@ -114,49 +133,39 @@ app.post("/user/login", async (req, res) => {
         return res.status(400).send("Cannot find user");
     }
     try {
-        if (await bcrypt.compare(req.body.password, user.password)) {
-            if (
-                !process.env.ACCESS_TOKEN_SECRET ||
-                !process.env.REFRESH_TOKEN_SECRET
-            ) {
-                return res
-                    .status(500)
-                    .send("Missing access or/and refresh token secret");
-            }
 
-            const accessToken = jwt.sign(
-                {userName: user.userName},
-                process.env.ACCESS_TOKEN_SECRET,
-                {expiresIn: "20s"}
-            );
-            const refreshToken = jwt.sign(
-                {userName: user.userName},
-                process.env.REFRESH_TOKEN_SECRET
-            );
-            refreshTokens.push(refreshToken);
-            res.json({accessToken: accessToken, refreshToken: refreshToken});
-
-            res.status(202);
-        } else {
-            res.status(401).send("Access denied");
+        if (!await bcrypt.compare(req.body.password, user.password)) {
+            return res.status(401).send("Access denied");
         }
-    } catch {
-        res.status(500).send();
+
+        if (
+            !process.env.ACCESS_TOKEN_SECRET ||
+            !process.env.REFRESH_TOKEN_SECRET
+        ) {
+            return res
+                .status(500)
+                .send("Missing access or/and refresh token secret");
+        }
+
+        const accessToken = generateAccessToken({name: user.userName}, res);
+        const refreshToken = generateRefreshToken({name: user.userName}, res);
+        await RefreshToken.insert({
+            refreshToken: refreshToken,
+            user: user // Associate refresh token with the user
+        });
+
+        res.status(202).json({accessToken: accessToken});
+    } catch (error) {
+        res.status(500).send("Error logging in" + error);
     }
 });
 
-function generateAccessToken(user: any, res: Response) {
-    if (!process.env.ACCESS_TOKEN_SECRET) {
-        return res.status(500).send("Missing access token secret");
-    }
+app.delete("/logout", async (req, res) => {
+    const userId = req.body.userId;
 
-    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "20s"});
-}
-
-app.delete("/logout", (req, res) => {
-    refreshTokens = refreshTokens.filter((refreshToken: any) => refreshToken !== req.body.refreshToken);
-    res.sendStatus(204);
-})
+    await RefreshToken.delete({user: {id: userId}});
+    res.sendStatus(204)
+});
 
 app.listen(port, () => {
 });

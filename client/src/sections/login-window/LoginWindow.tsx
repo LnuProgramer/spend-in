@@ -2,9 +2,8 @@ import React from "react";
 import LargeText from "../../components/sections-texts/LargeText";
 import SmallText from "../../components/sections-texts/SmallText";
 import MediumSmallText from "../../components/sections-texts/MediumSmallText";
-import {FaLock, FaUnlock, FaUser} from "react-icons/fa";
+import { FaLock, FaUnlock, FaUser } from "react-icons/fa";
 import Button from "../../components/button/Button";
-import axios from "axios";
 
 interface LoginWindowProps {
     userName: string
@@ -17,10 +16,6 @@ interface LoginWindowProps {
     PasswordShow: Function
 }
 
-const api = axios.create({
-    baseURL: "http://localhost:8000/",
-})
-
 function LoginWindow({
                          userName,
                          setUserName,
@@ -31,12 +26,6 @@ function LoginWindow({
                          seePassword,
                          PasswordShow,
                      }: LoginWindowProps) {
-
-    const LoginHandler = () => {
-        api.post("/user/login", {userName: userName, password: password}).then((res) => {
-            localStorage.setItem("token", res.data.accessToken)
-        })
-    }
 
     return (
         <div

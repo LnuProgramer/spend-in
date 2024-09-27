@@ -1,5 +1,5 @@
 GET http://localhost:8000/user
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkYXdkYXdkIiwiaWF0IjoxNzI1NjQ2MjA4LCJleHAiOjE3MjU2NDYyMjh9.TeO3HzRbq2t5nIFyG_PD0XClhZXUOoYSRrwlCcvmUMU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibXloYWlsbyIsImlhdCI6MTcyNzQ0NDAzNywiZXhwIjoxNzI3NDQ0OTM3fQ.B952cAvdP4RXGvQDs5F0I6tsUatCGmyOYg_Ja5SC7iE
 
 ###
 
@@ -7,8 +7,8 @@ POST http://localhost:8000/user
 Content-Type: application/json
 
 {
-  "username": "adawdawd",
-  "email": "test@test.test",
+  "userName": "nazar",
+  "email": "nazar@test.test",
   "password": "test123"
 }
 
@@ -18,16 +18,7 @@ POST http://localhost:8000/token
 Content-Type: application/json
 
 {
-  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJyYSIsImlhdCI6MTcyNTYyMzAzMX0.QRxaEDG3NJf25IwEppK80mPDAKBB05PGEpnOWv4d7J4"
-}
-
-###
-
-DELETE http://localhost:8000/logout
-Content-Type: application/json
-
-{
-  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkYXdkYXdkIiwiaWF0IjoxNzI1NzI3NjQwfQ.8AINZjVh9AbkH-xHyVpZ-VqoU5kvgU_TrFGqf5GVZ-c"
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibXloYWlsbyIsImlhdCI6MTcyNzQ0NDAzNywiZXhwIjoxNzI4NzQwMDM3fQ.Hn-9ZWbaGuziwWtnhu2YcXXJorVGcHxXsZCq-6yNDH4"
 }
 
 ###
@@ -36,6 +27,15 @@ POST http://localhost:8000/user/login
 Content-Type: application/json
 
 {
-  "username": "adawdawd",
+  "email": "nazar@test.test",
   "password": "test123"
+}
+
+###
+
+DELETE http://localhost:8000/logout
+Content-Type: application/json
+
+{
+  "userId": 13
 }
