@@ -104,7 +104,7 @@ app.post("/user", async (req, res) => {
 });
 
 app.post("/token", async (req, res) => {
-    let refreshToken = req.body.refreshToken;
+    const refreshToken = req.body.refreshToken;
 
     if (!refreshToken) return res.sendStatus(401);
     let token = await RefreshToken.findOneBy({refreshToken: refreshToken});
@@ -154,7 +154,7 @@ app.post("/user/login", async (req, res) => {
             user: user // Associate refresh token with the user
         });
 
-        res.status(202).json({accessToken: accessToken});
+        res.status(202).json({accessToken: accessToken, refreshToken: refreshToken});
     } catch (error) {
         res.status(500).send("Error logging in" + error);
     }

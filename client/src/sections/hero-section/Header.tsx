@@ -1,26 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./HeaderStyle.scss";
 import Button from "../../components/button/Button";
-import smoothScrollTo from "../../SrcollAnimation";
+import smoothScrollTo from "../../scripts/SrcollAnimation";
 import MediumSmallText from "../../components/sections-texts/MediumSmallText";
 import SmallText from "../../components/sections-texts/SmallText";
-import axios from "axios";
+import { checkAccessToken } from "../../scripts/LoginRegistrationRequests";
 
-const api = axios.create({
-    baseURL: "http://localhost:8000",
-})
-
-async function checkAccessToken() {
-    await api.get("/user", {
-        headers: {
-            authorization: `Bearer ${localStorage.getItem("token")}`,
-        }
-    }).then((res) => {
-        if (res.status !== 200) {
-            api.post("token")
-        }
-    })
-}
+useEffect(() => {
+    checkAccessToken()
+}, [])
 
 function Header() {
     const [productsDropMenu, setProductsDropMenu] = useState(false);
