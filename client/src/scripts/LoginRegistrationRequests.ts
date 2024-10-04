@@ -18,7 +18,9 @@ export async function checkAccessToken() {
             return
         }
         await api.post("token", {refreshToken: localStorage.getItem("refreshToken")}).then((res) => {
-            localStorage.setItem("accessToken", res.data.accessToken);
+            if (res.status === 200) {
+                localStorage.setItem("accessToken", res.data.accessToken);
+            }
         });
     })
 }

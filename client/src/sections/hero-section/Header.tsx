@@ -4,18 +4,22 @@ import Button from "../../components/button/Button";
 import smoothScrollTo from "../../scripts/SrcollAnimation";
 import MediumSmallText from "../../components/sections-texts/MediumSmallText";
 import SmallText from "../../components/sections-texts/SmallText";
-import { checkAccessToken } from "../../scripts/LoginRegistrationRequests";
+import RegistrationLogin from "../login-window/RegistrationLogin";
 
-useEffect(() => {
-    checkAccessToken()
-}, [])
+interface HeaderProps {
+    setLoginWindowShow: (show: boolean) => void;
+}
 
-function Header() {
+function Header({setLoginWindowShow}: HeaderProps) {
     const [productsDropMenu, setProductsDropMenu] = useState(false);
     const [companyDropMenu, setCompanyDropMenu] = useState(false);
 
     const productsMenuRef = useRef<HTMLUListElement>(null);
     const companyMenuRef = useRef<HTMLUListElement>(null);
+
+    const handleLoginWindowShow = () => {
+        setLoginWindowShow(true);
+    }
 
     const handleProductsDropMenu = () => {
         setProductsDropMenu(!productsDropMenu);
@@ -268,7 +272,7 @@ function Header() {
                 </div>
             </nav>
             <div className="header-divs" id="header-div-right">
-                <a href="" id="login-button">
+                <a id="login-button" onClick={handleLoginWindowShow}>
                     <MediumSmallText
                         text="Login"
                         textColor="white-gray"

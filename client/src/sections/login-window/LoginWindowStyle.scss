@@ -11,7 +11,16 @@
   height: 100vh;
   backdrop-filter: blur(50px);
   -webkit-backdrop-filter: blur(50px);
-  z-index: 10;
+  z-index: 20;
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+  pointer-events: none;
+
+
+  &.show-login-section {
+    opacity: 1;
+    pointer-events: all;
+  }
 }
 
 #registration-login-section-wrapper {
@@ -46,9 +55,12 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  pointer-events: none;
 
+  
   &.on-screen {
     opacity: 1;
+    pointer-events: all;
   }
 }
 

@@ -5,7 +5,6 @@ import MediumSmallText from "../../components/sections-texts/MediumSmallText";
 import { MdEmail } from "react-icons/md";
 import Button from "../../components/button/Button";
 import React from "react";
-import axios from "axios";
 
 interface RegistrationWindowProps {
     userName: string
@@ -67,7 +66,7 @@ function RegistrationWindow({
             </div>
             <div className="registration-and-login-block registration-and-login-inputs-block">
                 <div className="registration-and-login-input-wrapper">
-                    <input type="text" placeholder="" required/>
+                    <input tabIndex={!isSwapped ? -1 : 0} type="text" placeholder="" required/>
                     <FaUser className="registration-and-login-input-icon"/>
                     <MediumSmallText
                         text="Username"
@@ -77,7 +76,7 @@ function RegistrationWindow({
                     />
                 </div>
                 <div className="registration-and-login-input-wrapper">
-                    <input type="email" placeholder="" required/>
+                    <input tabIndex={!isSwapped ? -1 : 0} type="email" placeholder="" required/>
                     <MdEmail className="registration-and-login-input-icon"/>
                     <MediumSmallText
                         text="Email"
@@ -87,10 +86,10 @@ function RegistrationWindow({
                     />
                 </div>
                 <div className="registration-and-login-input-wrapper">
-                    <input
-                        type={!seePassword ? "password" : "text"}
-                        placeholder=""
-                        required
+                    <input tabIndex={!isSwapped ? -1 : 0}
+                           type={!seePassword ? "password" : "text"}
+                           placeholder=""
+                           required
                     />
                     {!seePassword ? (
                         <FaLock
@@ -111,10 +110,10 @@ function RegistrationWindow({
                     />
                 </div>
                 <div className="registration-and-login-input-wrapper">
-                    <input
-                        type={!seePassword ? "password" : "text"}
-                        placeholder=""
-                        required
+                    <input tabIndex={!isSwapped ? -1 : 0}
+                           type={!seePassword ? "password" : "text"}
+                           placeholder=""
+                           required
                     />
                     {!seePassword ? (
                         <FaLock
@@ -135,6 +134,7 @@ function RegistrationWindow({
                     />
                 </div>
                 <Button
+                    tabIndex={!isSwapped ? -1 : 0}
                     buttonText={"Registration"}
                     buttonColor="primary"
                     rounded={false}

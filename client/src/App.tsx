@@ -10,12 +10,24 @@ import WhatTheySay from "./sections/what-they-say-section/WhatTheySay";
 import WhyUse from "./sections/why-use-section/WhyUse";
 import DownloadNow from "./sections/download-now/DownloadNow";
 import ReturnButton from "./sections/return-button/ReturnButton";
+import { useEffect, useState } from "react";
+import { checkAccessToken } from "./scripts/LoginRegistrationRequests";
 import RegistrationLogin from "./sections/login-window/RegistrationLogin";
 
 function App() {
+    const [loginWindowShow, setLoginWindowShow] = useState(false);
+
+    useEffect(() => {
+        const verifyAccessToken = async () => {
+            await checkAccessToken();
+        };
+
+        verifyAccessToken().catch((err) => console.error(err));
+    }, [])
+
     return (
         <div className="App">
-            <HeroSection/>
+            <HeroSection setLoginWindowShow={setLoginWindowShow}/>
             <WhyUse/>
             <HowItWorks/>
             <IncreaseProductivity/>
@@ -24,7 +36,7 @@ function App() {
             <DownloadNow/>
             <Footer/>
             <ReturnButton/>
-            <RegistrationLogin/>
+            <RegistrationLogin loginWindowShow={loginWindowShow} setLoginWindowShow={setLoginWindowShow}/>
         </div>
     );
 }

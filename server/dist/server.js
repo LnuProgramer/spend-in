@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+const cors_1 = __importDefault(require("cors"));
 const typeorm_1 = require("typeorm");
 require("reflect-metadata");
 const dotenv_1 = __importDefault(require("dotenv"));
@@ -23,6 +24,7 @@ const RefreshToken_1 = require("./Entities/RefreshToken");
 dotenv_1.default.config();
 const port = 8000;
 const app = (0, express_1.default)();
+app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 const AppDataSource = new typeorm_1.DataSource({
     type: "mysql",
@@ -105,7 +107,7 @@ app.post("/user", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 }));
 app.post("/token", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    let refreshToken = req.body.refreshToken;
+    const refreshToken = req.body.refreshToken;
     if (!refreshToken)
         return res.sendStatus(401);
     let token = yield RefreshToken_1.RefreshToken.findOneBy({ refreshToken: refreshToken });
@@ -146,7 +148,7 @@ app.post("/user/login", (req, res) => __awaiter(void 0, void 0, void 0, function
             refreshToken: refreshToken,
             user: user // Associate refresh token with the user
         });
-        res.status(202).json({ accessToken: accessToken });
+        res.status(202).json({ accessToken: accessToken, refreshToken: refreshToken });
     }
     catch (error) {
         res.status(500).send("Error logging in" + error);

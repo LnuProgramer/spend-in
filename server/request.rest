@@ -1,5 +1,5 @@
 GET http://localhost:8000/user
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibXloYWlsbyIsImlhdCI6MTcyNzQ0NDAzNywiZXhwIjoxNzI3NDQ0OTM3fQ.B952cAvdP4RXGvQDs5F0I6tsUatCGmyOYg_Ja5SC7iE
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibXloYWlsbyIsImlhdCI6MTcyNzQ0NDAzNywiZXhwIjoxNzI4NzQwMDM3fQ.Hn-9ZWbaGuziwWtnhu2YcXXJorVGcHxXsZCq-6yNDH4
 
 ###
 

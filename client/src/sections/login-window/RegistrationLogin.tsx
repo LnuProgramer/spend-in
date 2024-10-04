@@ -4,8 +4,12 @@ import "./LoginWindowStyle.scss";
 import { AiOutlineClose } from "react-icons/ai";
 import React, { useEffect, useState } from "react";
 
+interface RegistrationLoginProps {
+    loginWindowShow: boolean;
+    setLoginWindowShow: (show: boolean) => void;
+}
 
-function RegistrationLogin() {
+function RegistrationLogin({loginWindowShow, setLoginWindowShow}: RegistrationLoginProps) {
     const [isSwapped, setIsSwapped] = useState(false);
     const [seePassword, setSeePassword] = useState(false);
 
@@ -13,6 +17,10 @@ function RegistrationLogin() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+
+    const handleLoginSectionShow = () => {
+        setLoginWindowShow(false);
+    }
 
     const PasswordShow = () => {
         setSeePassword(!seePassword);
@@ -28,9 +36,9 @@ function RegistrationLogin() {
     }, [isSwapped]);
 
     return (
-        <div id="registration-login-section">
+        <div id="registration-login-section" className={`${loginWindowShow ? "show-login-section" : ""}`}>
             <div id="registration-login-section-wrapper">
-                <AiOutlineClose id="registration-login-cross-img"/>
+                <AiOutlineClose id="registration-login-cross-img" onClick={handleLoginSectionShow}/>
                 <div
                     className={`registration-login-section-swapper ${
                         isSwapped && "swap"

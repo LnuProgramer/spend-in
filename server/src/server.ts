@@ -1,6 +1,7 @@
 import express, { Response, Request } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import cors from "cors"
 import { DataSource } from "typeorm";
 import "reflect-metadata";
 import dotenv from "dotenv";
@@ -9,8 +10,10 @@ import { RefreshToken } from "./Entities/RefreshToken";
 
 dotenv.config();
 
+
 const port = 8000;
 const app = express();
+app.use(cors())
 app.use(express.json());
 
 const AppDataSource = new DataSource({

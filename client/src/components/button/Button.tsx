@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./ButtonStyle.scss";
 import smoothScrollTo from "../../scripts/SrcollAnimation";
 
-type ButtonProps = {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     buttonColor: string;
     buttonText: any;
     rounded: boolean;
@@ -16,6 +16,7 @@ function Button({
                     rounded,
                     widthFull,
                     onClick,
+                    ...rest
                 }: ButtonProps) {
     const [isFocused, setIsFocused] = useState(false);
 
@@ -44,9 +45,11 @@ function Button({
                 padding: rounded ? "0.972vw" : "0.972vw 2.22vw",
                 width: widthFull ? "100%" : "fit-content",
             }}
+            {...rest}
         >
             {buttonText}
         </button>
+
     );
 }
 

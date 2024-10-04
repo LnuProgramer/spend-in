@@ -20,20 +20,14 @@
 
   * {
     transition: opacity 0.3s ease-in-out;
+
     &.show {
       opacity: 1;
     }
+
     &.not-show {
       opacity: 0;
     }
   }
 }
 
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
