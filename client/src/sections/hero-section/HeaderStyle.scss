@@ -54,21 +54,6 @@ header {
   }
 }
 
-.drop-menu-wraper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  &:hover {
-    .arrow-down path {
-      transition-property: scale, color;
-      transition-duration: 0.25s;
-      transition-timing-function: ease-in-out;
-      stroke: $secondinary-light-200;
-    }
-  }
-}
-
 .drop-menu {
   display: flex;
   justify-content: center;
@@ -133,6 +118,10 @@ header {
     transform: translateX(-0.9216vw);
   }
 
+  &#user-menu {
+    transform: translateX(-0.5216vw);
+  }
+
   &.show {
     opacity: 0;
   }
@@ -148,6 +137,10 @@ header {
     &#company-menu {
       transform: translate(-0.9216vw, 7.44vw);
     }
+
+    &#user-menu {
+      transform: translate(-0.5216vw, 7.44vw);
+    }
   }
 
   li {
@@ -155,10 +148,9 @@ header {
   }
 
   a {
-    text-decoration: none;
-
     p {
       transition: color 0.25s ease-in-out;
+      text-decoration: none;
     }
 
     &:hover {

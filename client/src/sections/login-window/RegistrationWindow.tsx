@@ -4,7 +4,7 @@ import { FaLock, FaUnlock, FaUser } from "react-icons/fa";
 import MediumSmallText from "../../components/sections-texts/MediumSmallText";
 import { MdEmail } from "react-icons/md";
 import Button from "../../components/button/Button";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RegistrationRequest } from "../../scripts/LoginRegistrationRequests";
 
 interface RegistrationWindowProps {
@@ -41,8 +41,12 @@ function RegistrationWindow({
     const [notValidPassword, setNotValidPassword] = useState(false);
     const [notValidEmail, setNotValidEmail] = useState(false);
     const [notValidConfirmPassword, setNotValidConfirmPassword] = useState(false);
+    const [existUserName, setExistUserName] = useState(false);
+    const [existEmail, setExistEmail] = useState(false);
+    const [somethingWentWrong, setSomethingWentWrong] = useState(false);
+    const [validationMassage, setValidationMassage] = useState("");
 
-    const registrationHandler = () => {
+    const registrationHandler = async () => {
         userNameValidHandler(userName)
         passwordValidHandler(password)
         emailValidHandler(email)
@@ -51,9 +55,26 @@ function RegistrationWindow({
         if (notValidUsername || notValidPassword || notValidEmail || notValidConfirmPassword) {
             return;
         }
-
-        RegistrationRequest(userName, email, password).catch((err) => console.error(err))
-        return;
+        try {
+            const registrationStatus = await RegistrationRequest(userName, email, password)
+            if (registrationStatus === 400) {
+                setExistUserName(true);
+                return;
+            }
+            if (registrationStatus === 401) {
+                setExistEmail(true);
+                return;
+            }
+            if (registrationStatus === 500) {
+                setSomethingWentWrong(true)
+            }
+            setExistUserName(false)
+            setExistEmail(false);
+            setSomethingWentWrong(false)
+            window.location.reload();
+        } catch (error) {
+            console.error(error)
+        }
     }
 
     const userNameValidHandler = (userName: string) => {
@@ -112,6 +133,20 @@ function RegistrationWindow({
         setNotValidConfirmPassword(false)
     }
 
+    useEffect(() => {
+        let massage = notValidUsername ? "Username must contain at least 4 letters"
+            : notValidPassword ? "Password must be at least 6 characters long and contain numbers and capital letters"
+                : notValidEmail ? "Email is not valid"
+                    : notValidConfirmPassword ? "Passwords didn`t match"
+                        : existUserName ? "User with this username is already exist"
+                            : existEmail ? "User with this email is already exist"
+                                : somethingWentWrong && "Something went wrong. Please try again later"
+
+        if (massage) {
+            setValidationMassage(massage)
+        }
+    }, [notValidUsername, notValidEmail, notValidPassword, notValidConfirmPassword, existUserName, existEmail]);
+
     return (
         <div
             className={`${isSwapped && "on-screen"}`}
@@ -141,13 +176,10 @@ function RegistrationWindow({
                     </a>
                 </div>
                 <div
-                    className={`error-div ${notValidPassword || notValidUsername || notValidEmail || notValidConfirmPassword ? "show-error" : ""}`}>
+                    className={`error-div ${notValidPassword || notValidUsername || notValidEmail ||
+                    notValidConfirmPassword || existEmail || existUserName || somethingWentWrong ? "show-error" : ""}`}>
                     <MediumSmallText
-                        text={`${notValidUsername ? "Username must contain at least 4 letters"
-                            : notValidPassword ? "Password must be at least 6 characters long and contain numbers and capital letters"
-                                : notValidEmail ? "Email is not valid"
-                                    : notValidConfirmPassword ? "Passwords didn`t match"
-                                        : "User with this username is already exist"}`}
+                        text={validationMassage}
                         textColor="white"
                         fontSizeVw={notValidPassword ? 1.1 : 1.25}
                         lineHeightVw={1.5}/>
@@ -156,7 +188,12 @@ function RegistrationWindow({
             <form className="registration-and-login-block registration-and-login-inputs-block"
                   onSubmit={(e) => {
                       e.preventDefault(); // Prevent form submission if inputs are invalid
-                      registrationHandler(); // Call your login handler function
+                      registrationHandler().catch((error) => console.error(error));
+                  }}
+                  onChange={() => {
+                      setExistUserName(false)
+                      setExistEmail(false)
+                      setSomethingWentWrong(false)
                   }}>
                 <div className="registration-and-login-input-wrapper">
                     <input tabIndex={!isSwapped ? -1 : 0} type="text" placeholder="" required value={userName}

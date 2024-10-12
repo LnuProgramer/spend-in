@@ -53,7 +53,7 @@ function authenticateToken(req, res, next) {
         if (!user)
             return res.sendStatus(403);
         // @ts-ignore
-        req.user = user;
+        req.user = { userName: user.userName, };
         next();
     });
 }
@@ -75,12 +75,10 @@ app.get("/user", authenticateToken, (req, res) => __awaiter(void 0, void 0, void
         const user = yield User_1.User.findOneBy({
             // @ts-ignore
             userName: req.user.userName,
-            // @ts-ignore
-            email: req.user.email,
         });
         if (!user)
             return res.status(400).send("User not found");
-        res.status(200).json(user);
+        res.status(200).json({ id: user.id, userName: user.userName });
     }
     catch (error) {
         res.status(500).send("Server error" + error);
@@ -93,7 +91,7 @@ app.post("/user", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         if (user)
             return res.status(400).send("User already exists");
         if (email)
-            return res.status(400).send("Email already exists");
+            return res.status(401).send("Email already exists");
         const hashedPassword = yield bcrypt_1.default.hash(req.body.password, 10);
         yield User_1.User.insert({
             userName: req.body.userName,
@@ -126,8 +124,7 @@ app.post("/token", (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 }));
 app.post("/user/login", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield User_1.User.findOneBy({
-        userName: req.body.userName,
-        email: req.body.email,
+        userName: req.body.userName
     });
     if (!user) {
         return res.status(400).send("Cannot find user");
@@ -144,10 +141,20 @@ app.post("/user/login", (req, res) => __awaiter(void 0, void 0, void 0, function
         }
         const accessToken = generateAccessToken({ name: user.userName }, res);
         const refreshToken = generateRefreshToken({ name: user.userName }, res);
-        yield RefreshToken_1.RefreshToken.insert({
-            refreshToken: refreshToken,
-            user: user // Associate refresh token with the user
-        });
+        // Check if the user already has a refresh token
+        const existingToken = yield RefreshToken_1.RefreshToken.findOneBy({ user: user });
+        if (existingToken) {
+            // Update the existing refresh token
+            yield RefreshToken_1.RefreshToken.update(existingToken.id, {
+                refreshToken: refreshToken
+            });
+        }
+        else {
+            yield RefreshToken_1.RefreshToken.insert({
+                refreshToken: refreshToken,
+                user: user // Associate refresh token with the user
+            });
+        }
         res.status(202).json({ accessToken: accessToken, refreshToken: refreshToken });
     }
     catch (error) {
@@ -155,8 +162,11 @@ app.post("/user/login", (req, res) => __awaiter(void 0, void 0, void 0, function
     }
 }));
 app.delete("/logout", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const userId = req.body.userId;
-    yield RefreshToken_1.RefreshToken.delete({ user: { id: userId } });
+    const { userId, refreshToken } = req.body;
+    const tokenRecord = yield RefreshToken_1.RefreshToken.findOneBy({ refreshToken });
+    if (tokenRecord) {
+        yield RefreshToken_1.RefreshToken.delete({ user: { id: userId }, refreshToken: refreshToken });
+    }
     res.sendStatus(204);
 }));
 app.listen(port, () => {

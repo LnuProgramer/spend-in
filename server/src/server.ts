@@ -43,7 +43,7 @@ function authenticateToken(req: Request, res: Response, next: Function) {
         if (err) return res.sendStatus(403);
         if (!user) return res.sendStatus(403);
         // @ts-ignore
-        req.user = user;
+        req.user = {userName: user.userName,};
         next();
     });
 }
@@ -70,14 +70,12 @@ app.get("/user", authenticateToken, async (req, res) => {
         const user = await User.findOneBy({
             // @ts-ignore
             userName: req.user.userName,
-            // @ts-ignore
-            email: req.user.email,
         });
 
         if (!user)
             return res.status(400).send("User not found");
 
-        res.status(200).json(user);
+        res.status(200).json({id: user.id, userName: user.userName});
 
     } catch (error) {
         res.status(500).send("Server error" + error);
@@ -91,7 +89,7 @@ app.post("/user", async (req, res) => {
         if (user)
             return res.status(400).send("User already exists");
         if (email)
-            return res.status(400).send("Email already exists");
+            return res.status(401).send("Email already exists");
 
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
@@ -129,8 +127,7 @@ app.post("/token", async (req, res) => {
 
 app.post("/user/login", async (req, res) => {
     const user = await User.findOneBy({
-        userName: req.body.userName,
-        email: req.body.email,
+        userName: req.body.userName
     });
     if (!user) {
         return res.status(400).send("Cannot find user");
@@ -152,11 +149,22 @@ app.post("/user/login", async (req, res) => {
 
         const accessToken = generateAccessToken({name: user.userName}, res);
         const refreshToken = generateRefreshToken({name: user.userName}, res);
-        await RefreshToken.insert({
-            refreshToken: refreshToken,
-            user: user // Associate refresh token with the user
-        });
 
+        // Check if the user already has a refresh token
+        const existingToken = await RefreshToken.findOneBy({user: user});
+
+        if (existingToken) {
+            // Update the existing refresh token
+            await RefreshToken.update(existingToken.id, {
+                refreshToken: refreshToken
+            });
+        } else {
+
+            await RefreshToken.insert({
+                refreshToken: refreshToken,
+                user: user // Associate refresh token with the user
+            });
+        }
         res.status(202).json({accessToken: accessToken, refreshToken: refreshToken});
     } catch (error) {
         res.status(500).send("Error logging in" + error);
@@ -164,11 +172,15 @@ app.post("/user/login", async (req, res) => {
 });
 
 app.delete("/logout", async (req, res) => {
-    const userId = req.body.userId;
+    const {userId, refreshToken} = req.body;
 
-    await RefreshToken.delete({user: {id: userId}});
-    res.sendStatus(204)
+    const tokenRecord = await RefreshToken.findOneBy({refreshToken});
+
+    if (tokenRecord) {
+        await RefreshToken.delete({user: {id: userId}, refreshToken: refreshToken});
+    }
+    res.sendStatus(204);
 });
 
 app.listen(port, () => {
-});
+})

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import LargeText from "../../components/sections-texts/LargeText";
 import SmallText from "../../components/sections-texts/SmallText";
 import MediumSmallText from "../../components/sections-texts/MediumSmallText";
@@ -28,11 +28,34 @@ function LoginWindow({
                          PasswordShow,
                      }: LoginWindowProps) {
 
-    const loginHandler = () => {
-        LoginRequest(userName, password).catch((err) => {
-            console.log(err)
-        });
-    }
+    const [wrongUserInfo, setWrongUserInfo] = useState(false);
+    const [somethingWentWrong, setSomethingWentWrong] = useState(false);
+    const [validationMassage, setValidationMassage] = useState("");
+
+    const loginHandler = async () => {
+        const loginStatus = await LoginRequest(userName, password)
+        console.log(loginStatus)
+        if (loginStatus === 400 || loginStatus === 401) {
+            setWrongUserInfo(true);
+            return
+        }
+        if (loginStatus === 500) {
+            setSomethingWentWrong(true);
+            return
+        }
+        setWrongUserInfo(false);
+        setSomethingWentWrong(false)
+        window.location.reload();
+    };
+
+    useEffect(() => {
+        let massage = wrongUserInfo ? "Username or password is incorrect"
+            : somethingWentWrong && "Something went wrong. Please try again later"
+
+        if (massage)
+            setValidationMassage(massage);
+    }, [wrongUserInfo, somethingWentWrong])
+
     return (
         <div
             className={`${!isSwapped && "on-screen"}`}
@@ -61,9 +84,9 @@ function LoginWindow({
                         />
                     </a>
                 </div>
-                <div className={'error-div'}>
+                <div className={`error-div ${wrongUserInfo || somethingWentWrong ? "show-error" : ""}`}>
                     <MediumSmallText
-                        text={"User with this username is already exist"}
+                        text={validationMassage}
                         textColor="white"
                         fontSizeVw={1.25}
                         lineHeightVw={1.9}/>
@@ -72,7 +95,12 @@ function LoginWindow({
             <form className="registration-and-login-block registration-and-login-inputs-block"
                   onSubmit={(e) => {
                       e.preventDefault(); // Prevent form submission if inputs are invalid
-                      loginHandler(); // Call your login handler function
+                      loginHandler().catch((err) => console.error(err));
+                  }}
+                  onChange={() => {
+                      setWrongUserInfo(false)
+                      setSomethingWentWrong(false)
+
                   }}>
                 <div className="registration-and-login-input-wrapper">
                     <input

@@ -1,64 +1,121 @@
 import axios from "axios";
+import { Simulate } from "react-dom/test-utils";
+import error = Simulate.error;
 
 const api = axios.create({
     baseURL: "http://localhost:8000",
 })
 
 async function getUserData() {
-    return await api.get("/user", {
-        headers: {
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        }
-    }).then(res => res.data);
+    try {
+        return await api.get("/user", {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            }
+        });
+    } catch (error) {
+        console.error("Error fetching user data:", error);
+        throw error;
+    }
 }
 
 export async function checkAccessToken() {
-    getUserData().then(async (res) => {
+    try {
+        // Перший запит на отримання даних користувача
+        const res = await getUserData();
         if (res.status === 200) {
-            return
+            return res.data.userName;
         }
-        try {
-            await api.post("token", {refreshToken: localStorage.getItem("refreshToken")}).then((res) => {
-                if (res.status === 200) {
-                    localStorage.setItem("accessToken", res.data.accessToken);
-                }
-            });
-        } catch (err) {
-            console.error(err);
+    } catch (err) {
+        console.error("Error fetching user data:", err);
+    }
+
+    const refreshToken = localStorage.getItem("refreshToken");
+    if (!refreshToken) {
+        console.error("No refresh token found.");
+        return null;
+    }
+
+    try {
+        const tokenRes = await api.post("token", {
+            refreshToken: refreshToken
+        });
+
+        if (tokenRes.status === 200) {
+            localStorage.setItem("accessToken", tokenRes.data.accessToken);
+            const res = await getUserData();
+            if (res.status === 200) {
+                return res.data;
+            } else {
+                console.error("Failed to fetch user data after token refresh:", res.status);
+            }
+        } else {
+            console.error("Failed to refresh token:", tokenRes.status);
         }
-    })
+    } catch (err) {
+        console.error("Error refreshing token:", err);
+    }
+
+    return null;
 }
+
 
 export async function LoginRequest(userName: string, password: string,) {
     try {
-        await api.post("/user/login", {userName: userName, password: password}).then((res) => {
-            if (res.status === 400 || res.status === 401) {
-                return;
-            }
-            if (res.status !== 202) {
-                return;
-            }
+        const res = await api.post("/user/login", {userName: userName, password: password})
+        if (res.status === 202) {
             localStorage.setItem("accessToken", res.data.accessToken);
             localStorage.setItem("refreshToken", res.data.refreshToken);
-        })
-    } catch (error) {
-        console.log(error)
+        }
+        return res.status;
+    } catch (error: any) {
+        console.error(error)
+
+        if (error.response && error.response.status) {
+            return error.response.status; // Return the error status code
+        } else {
+            return 500; // Default to 500 if there's no response status
+        }
     }
 }
 
 export async function RegistrationRequest(userName: string, email: string, password: string) {
     try {
-        await api.post("/user", {userName: userName, email: email, password: password}).then(() => {
-            LoginRequest(userName, password);
-        })
-    } catch (error) {
-        console.log(error)
+        const res = await api.post("/user", {userName, email, password});
+
+        if (res.status === 201) {
+            await LoginRequest(userName, password);
+        }
+
+        return res.status;
+    } catch (error: any) {
+        console.error("Error during registration:", error);
+
+        if (error.response && error.response.status) {
+            return error.response.status; // Return the error status code
+        } else {
+            return 500; // Default to 500 if there's no response status
+        }
     }
 }
 
 export async function LogoutRequest() {
-    getUserData().then(async (res) => {
-        await api.post("/user/logout", {user: {id: res.id}});
-    })
+    try {
+        const userData = await getUserData();
+        const userId = userData.data.id;
+        const refreshToken = localStorage.getItem("refreshToken");
 
+        const res = await api.delete("/logout", {
+            data: {userId, refreshToken}
+        });
+
+        if (res.status === 204) {
+            localStorage.removeItem("accessToken");
+            localStorage.removeItem("refreshToken");
+            window.location.reload();
+        }
+    } catch (err) {
+        console.error("Error during logout:", err);
+    }
 }
+
