@@ -4,6 +4,7 @@ import SmallText from "../../components/sections-texts/SmallText";
 import MediumSmallText from "../../components/sections-texts/MediumSmallText";
 import { FaLock, FaUnlock, FaUser } from "react-icons/fa";
 import Button from "../../components/button/Button";
+import { LoginRequest } from "../../scripts/LoginRegistrationRequests";
 
 interface LoginWindowProps {
     userName: string
@@ -27,6 +28,11 @@ function LoginWindow({
                          PasswordShow,
                      }: LoginWindowProps) {
 
+    const loginHandler = () => {
+        LoginRequest(userName, password).catch((err) => {
+            console.log(err)
+        });
+    }
     return (
         <div
             className={`${!isSwapped && "on-screen"}`}
@@ -55,8 +61,19 @@ function LoginWindow({
                         />
                     </a>
                 </div>
+                <div className={'error-div'}>
+                    <MediumSmallText
+                        text={"User with this username is already exist"}
+                        textColor="white"
+                        fontSizeVw={1.25}
+                        lineHeightVw={1.9}/>
+                </div>
             </div>
-            <div className="registration-and-login-block registration-and-login-inputs-block">
+            <form className="registration-and-login-block registration-and-login-inputs-block"
+                  onSubmit={(e) => {
+                      e.preventDefault(); // Prevent form submission if inputs are invalid
+                      loginHandler(); // Call your login handler function
+                  }}>
                 <div className="registration-and-login-input-wrapper">
                     <input
                         type="text"
@@ -68,12 +85,14 @@ function LoginWindow({
                         }}
                     />
                     <FaUser className="registration-and-login-input-icon"/>
-                    <MediumSmallText
-                        text="Username"
-                        textColor="white"
-                        fontSizeVw={1.33}
-                        lineHeightVw={2.085}
-                    />
+                    <div className="input-label-div">
+                        <MediumSmallText
+                            text="Username"
+                            textColor="white"
+                            fontSizeVw={1.33}
+                            lineHeightVw={2.085}
+                        />
+                    </div>
                 </div>
                 <div className="registration-and-login-input-wrapper">
                     <input
@@ -96,21 +115,23 @@ function LoginWindow({
                             className="registration-and-login-input-icon"
                         />
                     )}
-
-                    <MediumSmallText
-                        text="Password"
-                        textColor="white"
-                        fontSizeVw={1.33}
-                        lineHeightVw={2.085}
-                    />
+                    <div className="input-label-div">
+                        <MediumSmallText
+                            text="Password"
+                            textColor="white"
+                            fontSizeVw={1.33}
+                            lineHeightVw={2.085}
+                        />
+                    </div>
                 </div>
                 <Button
                     buttonText={"Log In"}
                     buttonColor="primary"
                     rounded={false}
                     widthFull={false}
+                    type={"submit"}
                 />
-            </div>
+            </form>
             <div
                 className="registration-and-login-block"
                 id="login-window-block-restore-password"

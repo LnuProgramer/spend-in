@@ -17,15 +17,19 @@ export async function checkAccessToken() {
         if (res.status === 200) {
             return
         }
-        await api.post("token", {refreshToken: localStorage.getItem("refreshToken")}).then((res) => {
-            if (res.status === 200) {
-                localStorage.setItem("accessToken", res.data.accessToken);
-            }
-        });
+        try {
+            await api.post("token", {refreshToken: localStorage.getItem("refreshToken")}).then((res) => {
+                if (res.status === 200) {
+                    localStorage.setItem("accessToken", res.data.accessToken);
+                }
+            });
+        } catch (err) {
+            console.error(err);
+        }
     })
 }
 
-export async function LoginHandler(userName: string, password: string,) {
+export async function LoginRequest(userName: string, password: string,) {
     try {
         await api.post("/user/login", {userName: userName, password: password}).then((res) => {
             if (res.status === 400 || res.status === 401) {
@@ -42,20 +46,17 @@ export async function LoginHandler(userName: string, password: string,) {
     }
 }
 
-export async function RegistrationHandler(userName: string, email: string, password: string, confirmPassword: string) {
-    if (confirmPassword !== password) {
-        return;
-    }
+export async function RegistrationRequest(userName: string, email: string, password: string) {
     try {
         await api.post("/user", {userName: userName, email: email, password: password}).then(() => {
-            LoginHandler(userName, password);
+            LoginRequest(userName, password);
         })
     } catch (error) {
         console.log(error)
     }
 }
 
-export async function LogoutHandler() {
+export async function LogoutRequest() {
     getUserData().then(async (res) => {
         await api.post("/user/logout", {user: {id: res.id}});
     })

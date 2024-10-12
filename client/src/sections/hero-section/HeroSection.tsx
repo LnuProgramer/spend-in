@@ -6,6 +6,7 @@ import LargeText from "../../components/sections-texts/LargeText";
 import SmallText from "../../components/sections-texts/SmallText";
 import Button from "../../components/button/Button";
 import SectionBg from "./../../components/sections-bg/SectionBg";
+import smoothScrollTo from "../../scripts/SrcollAnimation";
 
 interface HeroSectionProps {
     setLoginWindowShow: (show: boolean) => void;
@@ -44,12 +45,14 @@ function HeroSection({setLoginWindowShow}: HeroSectionProps) {
                                 buttonColor="primary"
                                 rounded={false}
                                 widthFull={false}
+                                onClick={() => window.open("https://github.com/LnuProgramer")}
                             />
                             <Button
                                 buttonText="See Pricing"
                                 buttonColor="secondinary"
                                 rounded={false}
                                 widthFull={false}
+                                onClick={() => smoothScrollTo("get-started", 2000)}
                             />
                         </div>
                     </div>

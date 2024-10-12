@@ -4,7 +4,6 @@ import Button from "../../components/button/Button";
 import smoothScrollTo from "../../scripts/SrcollAnimation";
 import MediumSmallText from "../../components/sections-texts/MediumSmallText";
 import SmallText from "../../components/sections-texts/SmallText";
-import RegistrationLogin from "../login-window/RegistrationLogin";
 
 interface HeaderProps {
     setLoginWindowShow: (show: boolean) => void;
@@ -285,6 +284,7 @@ function Header({setLoginWindowShow}: HeaderProps) {
                     buttonText="Get Demo"
                     rounded={false}
                     widthFull={false}
+                    onClick={() => window.open("https://github.com/LnuProgramer")}
                 />
             </div>
         </header>

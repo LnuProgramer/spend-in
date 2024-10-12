@@ -27,7 +27,7 @@
   position: relative;
   padding-top: 3vw;
   width: 44.44vw;
-  height: 38.5vw;
+  height: 42vw;
   border: 0.138vw solid $secondinary-default-500;
   border-radius: 0.972vw;
   background-color: $secondinary-dark-700;
@@ -55,12 +55,9 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  pointer-events: none;
 
-  
   &.on-screen {
     opacity: 1;
-    pointer-events: all;
   }
 }
 
@@ -68,8 +65,8 @@
   position: absolute;
   left: 44.44vw;
   top: 0;
-  height: 90%;
-  gap: 2vw;
+  height: 95%;
+  gap: 0.5vw;
 }
 
 #registration-login-cross-img {
@@ -100,6 +97,27 @@
   align-items: center;
   width: 100%;
   gap: 0.833vw;
+
+}
+
+.error-div {
+  width: 62%;
+  height: 3.5vw;
+  background-color: $error-dark-900;
+  opacity: 0;
+  border-radius: 2vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  transition: opacity 0.35s ease-in-out;
+  text-align: center;
+  padding: 0 4% 0 4%;
+
+  &.show-error {
+    opacity: 1;
+    pointer-events: all;
+  }
 }
 
 .registration-and-login-inputs-block {
@@ -117,12 +135,49 @@
   justify-content: start;
   width: 68%;
 
-  h3 {
+  input {
+    transition: border-bottom-color 0.35s ease-in-out;
+  }
+
+  .input-error {
+    border-bottom-color: $error-default-500;
+  }
+
+  .input-label-div {
+    display: flex;
+    align-items: start;
+    gap: 0.3vw;
+    justify-content: center;
     transform: translateY(90%);
     width: fit-content;
     pointer-events: none;
     transition-property: color, transform;
     transition: 0.35s ease-in-out;
+
+    &.input-label-error {
+      h3 {
+        color: $error-default-500;
+      }
+    }
+
+    h3 {
+      transition: color 0.35s ease-in-out;
+    }
+
+    span {
+      color: white;
+      font-size: 1.25vw;
+      transition-property: color, opacity;
+      transition: 0.35s ease-in-out;
+      opacity: 0;
+      pointer-events: none;
+
+      &.error-star {
+        opacity: 1;
+        color: $error-default-500;
+        pointer-events: all;
+      }
+    }
   }
 
   .registration-and-login-input-icon {
@@ -152,20 +207,9 @@
     outline: none;
     transition: border-bottom 0.35s ease-in-out;
 
-    &:focus ~ h3,
-    &:not(:placeholder-shown) ~ h3 {
+    &:focus ~ .input-label-div,
+    &:not(:placeholder-shown) ~ .input-label-div {
       transform: translateY(-10%);
-    }
-
-    &:not(:placeholder-shown) {
-      &:not(:valid) {
-        border-bottom: 0.138vw solid rgb(255, 70, 70);
-      }
-
-      &:not(:valid) ~ h3,
-      &:not(:valid) ~ .login-window-input-icon {
-        color: rgb(255, 70, 70);
-      }
     }
   }
 }
