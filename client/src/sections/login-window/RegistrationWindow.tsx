@@ -68,9 +68,9 @@ function RegistrationWindow({
             if (registrationStatus === 500) {
                 setSomethingWentWrong(true)
             }
-            setExistUserName(false)
+            setExistUserName(false);
             setExistEmail(false);
-            setSomethingWentWrong(false)
+            setSomethingWentWrong(false);
             window.location.reload();
         } catch (error) {
             console.error(error)

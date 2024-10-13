@@ -52,8 +52,10 @@ function authenticateToken(req, res, next) {
             return res.sendStatus(403);
         if (!user)
             return res.sendStatus(403);
-        // @ts-ignore
-        req.user = { userName: user.userName, };
+        // Перевіряємо, що розшифрований токен містить правильні дані
+        console.log("Decoded user from token:", user);
+        // Зберігаємо дані про користувача в req для подальшого використання
+        req.user = { id: user.id, userName: user.userName };
         next();
     });
 }
@@ -61,14 +63,14 @@ function generateAccessToken(user, res) {
     if (!process.env.ACCESS_TOKEN_SECRET) {
         return res.status(500).send("Missing access token secret");
     }
-    return jsonwebtoken_1.default.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "15m" });
+    return jsonwebtoken_1.default.sign({ id: user.id, userName: user.userName }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "15m" });
 }
 function generateRefreshToken(user, res) {
     if (!process.env.REFRESH_TOKEN_SECRET) {
         res.status(500).send("Missing refresh token secret");
         return;
     }
-    return jsonwebtoken_1.default.sign(user, process.env.REFRESH_TOKEN_SECRET, { expiresIn: "15d" });
+    return jsonwebtoken_1.default.sign({ id: user.id, userName: user.userName }, process.env.REFRESH_TOKEN_SECRET, { expiresIn: "15d" });
 }
 app.get("/user", authenticateToken, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -118,7 +120,7 @@ app.post("/token", (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             return res.sendStatus(403);
         if (!user)
             return res.sendStatus(403);
-        const accessToken = generateAccessToken({ name: user.userName }, res);
+        const accessToken = generateAccessToken({ id: user.id, userName: user.userName }, res);
         res.json({ accessToken: accessToken });
     });
 }));
@@ -139,8 +141,8 @@ app.post("/user/login", (req, res) => __awaiter(void 0, void 0, void 0, function
                 .status(500)
                 .send("Missing access or/and refresh token secret");
         }
-        const accessToken = generateAccessToken({ name: user.userName }, res);
-        const refreshToken = generateRefreshToken({ name: user.userName }, res);
+        const accessToken = generateAccessToken({ id: user.id, userName: user.userName }, res);
+        const refreshToken = generateRefreshToken({ id: user.id, userName: user.userName }, res);
         // Check if the user already has a refresh token
         const existingToken = yield RefreshToken_1.RefreshToken.findOneBy({ user: user });
         if (existingToken) {

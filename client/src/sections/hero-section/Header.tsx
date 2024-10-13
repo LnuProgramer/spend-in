@@ -295,7 +295,16 @@ function Header({setLoginWindowShow}: HeaderProps) {
                 </div>
             </nav>
             <div className="header-divs" id="header-div-right">
-                {userNameLogin !== null || userNameLogin === "" ? (
+                {userNameLogin == null || userNameLogin === "" ? (
+                    <a id="login-button" onClick={handleLoginWindowShow}>
+                        <MediumSmallText
+                            text="Login"
+                            textColor="white-gray"
+                            fontSizeVw={1.25}
+                            lineHeightVw={1.875}
+                        />
+                    </a>
+                ) : (
                     <div className="drop-menu-wrapper">
                         <div className="drop-menu-div">
                             <div
@@ -348,15 +357,7 @@ function Header({setLoginWindowShow}: HeaderProps) {
                                 </li>
                             </ul>
                         </div>
-                    </div>
-                ) : (<a id="login-button" onClick={handleLoginWindowShow}>
-                    <MediumSmallText
-                        text="Login"
-                        textColor="white-gray"
-                        fontSizeVw={1.25}
-                        lineHeightVw={1.875}
-                    />
-                </a>)}
+                    </div>)}
 
                 <Button
                     buttonColor="primary"

@@ -8,8 +8,16 @@ import dotenv from "dotenv";
 import { User } from "./Entities/User";
 import { RefreshToken } from "./Entities/RefreshToken";
 
-dotenv.config();
+declare module 'express' {
+    interface Request {
+        user?: {
+            id: string;
+            userName: string;
+        };
+    }
+}
 
+dotenv.config();
 
 const port = 8000;
 const app = express();
@@ -34,26 +42,33 @@ AppDataSource.initialize()
 function authenticateToken(req: Request, res: Response, next: Function) {
     const authHeader = req.headers["authorization"];
     const token = typeof authHeader === "string" ? authHeader.split(" ")[1] : null;
+
     if (!token) return res.sendStatus(401);
 
     if (!process.env.ACCESS_TOKEN_SECRET) {
         return res.status(500).send("Missing access token secret");
     }
+
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err: any, user: any) => {
         if (err) return res.sendStatus(403);
         if (!user) return res.sendStatus(403);
-        // @ts-ignore
-        req.user = {userName: user.userName,};
+
+        // Перевіряємо, що розшифрований токен містить правильні дані
+        console.log("Decoded user from token:", user);
+
+        // Зберігаємо дані про користувача в req для подальшого використання
+        req.user = {id: user.id, userName: user.userName};
         next();
     });
 }
+
 
 function generateAccessToken(user: any, res: Response) {
     if (!process.env.ACCESS_TOKEN_SECRET) {
         return res.status(500).send("Missing access token secret");
     }
 
-    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "15m"});
+    return jwt.sign({id: user.id, userName: user.userName}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "15m"});
 }
 
 function generateRefreshToken(user: any, res: Response) {
@@ -61,7 +76,8 @@ function generateRefreshToken(user: any, res: Response) {
         res.status(500).send("Missing refresh token secret");
         return;
     }
-    return jwt.sign(user, process.env.REFRESH_TOKEN_SECRET, {expiresIn: "15d"});
+
+    return jwt.sign({id: user.id, userName: user.userName}, process.env.REFRESH_TOKEN_SECRET, {expiresIn: "15d"});
 }
 
 
@@ -119,7 +135,7 @@ app.post("/token", async (req, res) => {
         (err: any, user: any) => {
             if (err) return res.sendStatus(403);
             if (!user) return res.sendStatus(403);
-            const accessToken = generateAccessToken({name: user.userName}, res);
+            const accessToken = generateAccessToken({id: user.id, userName: user.userName}, res);
             res.json({accessToken: accessToken});
         }
     );
@@ -147,8 +163,8 @@ app.post("/user/login", async (req, res) => {
                 .send("Missing access or/and refresh token secret");
         }
 
-        const accessToken = generateAccessToken({name: user.userName}, res);
-        const refreshToken = generateRefreshToken({name: user.userName}, res);
+        const accessToken = generateAccessToken({id: user.id, userName: user.userName}, res);
+        const refreshToken = generateRefreshToken({id: user.id, userName: user.userName}, res);
 
         // Check if the user already has a refresh token
         const existingToken = await RefreshToken.findOneBy({user: user});

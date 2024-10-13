@@ -65,6 +65,10 @@ header {
     transition: transform 0.5s ease-in-out;
   }
 
+  #user-arrow-down path {
+    stroke: $secondinary-light-200
+  }
+
   .arrow-down path {
     transition: stroke 0.25s ease-in-out;
   }
@@ -83,6 +87,10 @@ header {
 
     .arrow-down path {
       stroke: $secondinary-light-200;
+    }
+
+    #user-arrow-down path {
+      stroke: white;
     }
 
     h3 {
@@ -178,6 +186,6 @@ header {
   h3:hover {
     cursor: pointer;
     scale: 1.1;
-    color: $secondinary-light-100;
+    color: white;
   }
 }
