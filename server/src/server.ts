@@ -68,7 +68,7 @@ function generateAccessToken(user: any, res: Response) {
         return res.status(500).send("Missing access token secret");
     }
 
-    return jwt.sign({id: user.id, userName: user.userName}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "15m"});
+    return jwt.sign({id: user.id, userName: user.userName}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "10s"});
 }
 
 function generateRefreshToken(user: any, res: Response) {

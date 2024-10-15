@@ -63,7 +63,7 @@ function generateAccessToken(user, res) {
     if (!process.env.ACCESS_TOKEN_SECRET) {
         return res.status(500).send("Missing access token secret");
     }
-    return jsonwebtoken_1.default.sign({ id: user.id, userName: user.userName }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "15m" });
+    return jsonwebtoken_1.default.sign({ id: user.id, userName: user.userName }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "10s" });
 }
 function generateRefreshToken(user, res) {
     if (!process.env.REFRESH_TOKEN_SECRET) {
