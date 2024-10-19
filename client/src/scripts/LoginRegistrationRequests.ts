@@ -19,7 +19,6 @@ async function getUserData() {
 
 export async function checkAccessToken() {
     try {
-        // Перший запит на отримання даних користувача
         const res = await getUserData();
         if (res.status === 200) {
             return res.data.userName;

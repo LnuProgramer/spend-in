@@ -77,11 +77,19 @@ function Header({setLoginWindowShow}: HeaderProps) {
     useEffect(() => {
         const verifyAccessToken = async () => {
             const user = await checkAccessToken();
-            setUserNameLogin(user);
+
+            if (typeof user === "string") {
+                setUserNameLogin(user);
+            } else if (user && typeof user.userName === "string") {
+                setUserNameLogin(user.userName);
+            } else {
+                console.error("Invalid user data:", user);
+            }
         };
 
         verifyAccessToken().catch((err) => console.error(err));
-    }, [])
+    }, []);
+
 
     return (
         <header>
