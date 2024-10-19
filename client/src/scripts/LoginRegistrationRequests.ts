@@ -98,12 +98,21 @@ export async function RegistrationRequest(userName: string, email: string, passw
 
 export async function LogoutRequest() {
     try {
+        const user = await checkAccessToken();
+
+        if (!user) {
+            return;
+        }
+
         const userData = await getUserData();
         const userId = userData.data.id;
         const refreshToken = localStorage.getItem("refreshToken");
 
         const res = await api.delete("/logout", {
-            data: {userId, refreshToken}
+            data: {userId, refreshToken},
+            headers: {
+                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
         });
 
         if (res.status === 204) {
@@ -115,4 +124,5 @@ export async function LogoutRequest() {
         console.error("Error during logout:", err);
     }
 }
+
 
