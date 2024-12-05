@@ -1,4 +1,4 @@
-import React, { ReactNode, useRef, useEffect } from "react";
+import React, { ReactNode, useRef, useEffect, useState } from "react";
 import "./SectionBgStyle.scss";
 import Lighting from "./Lighting";
 
@@ -11,6 +11,7 @@ type SectionBgProps = {
 
 function SectionBg({bgColor, paddingVw, children, id}: SectionBgProps) {
     const sectionRef = useRef<HTMLDivElement>(null);
+    const [adjustedPaddingVw, setAdjustedPaddingVw] = useState(paddingVw);
 
     useEffect(() => {
         const observer = new IntersectionObserver((entries) => {
@@ -26,6 +27,7 @@ function SectionBg({bgColor, paddingVw, children, id}: SectionBgProps) {
             });
         });
 
+
         if (sectionRef.current) {
             const observeAll = (element: Element) => {
                 observer.observe(element);
@@ -35,18 +37,26 @@ function SectionBg({bgColor, paddingVw, children, id}: SectionBgProps) {
             observeAll(sectionRef.current);
         }
 
+        const updatePadding = () => {
+            setAdjustedPaddingVw(
+                paddingVw === 8.33 && window.screen.width <= 1024 ? 7.466 : paddingVw
+            );
+        };
+        updatePadding();
+        window.addEventListener("resize", updatePadding);
         return () => {
             if (sectionRef.current) {
                 observer.disconnect();
             }
+            window.removeEventListener("resize", updatePadding);
         };
     }, []);
-
+    
     return (
         <section
             ref={sectionRef}
             className={`section-bg ${bgColor}`}
-            style={{padding: `${paddingVw}vw`}}
+            style={{padding: `${adjustedPaddingVw}vw`}}
             id={id}
         >
             {bgColor === "dark" && <Lighting/>}
