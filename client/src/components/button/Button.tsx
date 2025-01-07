@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ButtonStyle.scss";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -23,15 +23,23 @@ function Button({
         setTimeout(() => {
             setIsFocused(false);
         }, 250);
-        // if (!onClick && !onSubmit) {
-        //     if (buttonColor === "primary")
-        //         window.open("https://github.com/LnuProgramer");
-        //     else if (buttonColor === "secondinary") {
-        //         smoothScrollTo("get-started", 2000);
-        //     } else console.error("wrong buttonColor");
-        // } else if (onClick) onClick();
-        // else if (onSubmit) onSubmit();
     };
+
+    const [isPhoneScreen, setIsPhoneScreen] = useState(false)
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsPhoneScreen(window.innerWidth <= 768)
+        }
+        handleResize();
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
     return (
         <button
             className={`main-button ${buttonColor} ${
@@ -41,7 +49,7 @@ function Button({
             onClick={handelOnClick}
             onSubmit={handelOnClick}
             style={{
-                borderRadius: rounded ? "100%" : "2.083vw",
+                borderRadius: rounded ? "100%" : `${isPhoneScreen ? "8vw" : "2.083vw"}`,
                 padding: rounded ? "0.972vw" : "0.972vw 2.22vw",
                 width: widthFull ? "100%" : "fit-content",
             }}
@@ -49,7 +57,7 @@ function Button({
         >
             {buttonText}
         </button>
-    );
+    )
 }
 
 export default Button;

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./HowItWorksSection1Style.scss";
+import "../../../adaptation/how-it-works-section/how-it-works-section-1/HowItWorksSection1Adaptation.scss"
 import MediumText from "../../../components/sections-texts/MediumText";
 import LargeText from "../../../components/sections-texts/LargeText";
 import SmallText from "../../../components/sections-texts/SmallText";
@@ -9,6 +10,22 @@ import Button from "../../../components/button/Button";
 import smoothScrollTo from "../../../scripts/SrcollAnimation";
 
 function HowItWorksSection1() {
+    const [isPhoneScreen, setIsPhoneScreen] = useState(false)
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsPhoneScreen(window.innerWidth <= 768)
+        }
+        handleResize();
+
+        // Слухаємо зміни розміру вікна
+        window.addEventListener('resize', handleResize);
+
+        // Прибираємо слухача при відмонтованні компонента
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
     return (
         <SectionBg bgColor="dark" paddingVw={8.33} id="how-it-works-section-1">
             <div id="how-it-works-section-1-text-wrapper">
@@ -63,14 +80,14 @@ business expenses."
                         buttonText="Get a Free Demo"
                         buttonColor="primary"
                         rounded={false}
-                        widthFull={false}
+                        widthFull={!!isPhoneScreen}
                         onClick={() => window.open("https://github.com/LnuProgramer")}
                     />
                     <Button
                         buttonText="See Pricing"
                         buttonColor="secondinary"
                         rounded={false}
-                        widthFull={false}
+                        widthFull={!!isPhoneScreen}
                         onClick={() => smoothScrollTo("get-started", 2000)}
                     />
                 </div>

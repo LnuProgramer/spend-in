@@ -1,3 +1,87 @@
-@media screen and (max-width: 1024px) {
-  
+@import "../../../Colors";
+
+@media (max-width: 768px) {
+  #how-it-works-section-1 {
+    gap: 12.8vw;
+  }
+
+  #how-it-works-section-1-text-wrapper {
+    align-items: start;
+
+    h2 {
+      font-size: 3.2vw !important;
+      line-height: 4.032vw !important;
+    }
+  }
+
+  #how-it-works-section-1-small-and-large-text-wrapper {
+    align-items: start;
+    width: 100%;
+
+    h1 {
+      font-size: 6.4vw !important;
+      line-height: 9.6vw !important;
+      width: 45.86vw !important;
+      text-align: start;
+    }
+
+    p {
+      font-size: 3.73vw !important;
+      line-height: 5.6vw !important;
+      width: 83.73vw !important;
+    }
+  }
+
+  #how-it-works-section-1-small-text-wrapper {
+    text-align: start;
+  }
+
+  #how-it-works-section-1-steps-wrapper {
+    flex-direction: column;
+    gap: 5vw;
+
+    .how-it-works-section-1-step-block-wrapper {
+      width: 62.66vw;
+
+      .how-it-works-section-1-step-img {
+        width: 100%;
+      }
+
+      .how-it-works-section-1-step-circle {
+        width: 11.235vw !important;
+        height: 11.235vw !important;
+        border: 1.565vw solid $secondinary-dark-700;
+        top: -5.6175vw;
+        left: -5.6175vw;
+
+        h2 {
+          font-size: 6.258vw !important;
+          line-height: 9.386vw !important;
+        }
+      }
+
+      .how-it-works-section-1-step-text {
+        width: 40vw !important;
+      }
+
+      h3 {
+        font-size: 3.73vw !important;
+        line-height: 5.6vw !important;
+      }
+    }
+  }
+
+  #how-it-works-section-1-button-wrapper {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 6.4vw;
+
+    .main-button {
+      height: 13.86vw;
+      border-radius: 8vw;
+      font-size: 4.26vw;
+      line-height: 6.4vw;
+    }
+  }
 }
