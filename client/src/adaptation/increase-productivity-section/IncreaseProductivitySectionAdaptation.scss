@@ -1,0 +1,103 @@
+@media (max-width: 768px) {
+  #increase-productivity-section-text-wrapper {
+    width: 69.33vw !important;
+    gap: 3.2vw !important;
+
+    h1 {
+      font-size: 6.4vw !important;
+      line-height: 9.6vw !important;
+    }
+
+    h2 {
+      font-size: 3.2vw !important;
+      line-height: 4.05vw !important;
+    }
+  }
+
+  #increase-productivity-section-switch-benefits-and-chart-wrapper {
+    flex-direction: column;
+  }
+
+  #increase-productivity-section-switch-and-benefits-wrapper {
+    width: 100%;
+
+  }
+
+  #increase-productivity-section-benefits-wrapper {
+    width: 85.06vw !important;
+    transform: translateX(-83vw) !important;
+
+    &.isToggled {
+      transform: translateX(0) !important;
+    }
+  }
+
+  .increase-productivity-section-benefits-block-wrapper {
+    gap: 8.53vw !important;
+    width: 83vw !important;
+
+    .increase-productivity-section-benefit-wrapper {
+      gap: 3.2vw !important;
+    }
+
+    h1 {
+      font-size: 4.26vw !important;
+      line-height: 6.4vw !important;
+    }
+
+    h3 {
+      font-size: 3.2vw !important;
+      line-height: 4.8vw !important;
+    }
+
+    .increase-productivity-section-benefit-img {
+      width: 5.33vw !important;
+      height: 5.33vw !important;
+    }
+  }
+
+  #increase-productivity-switch {
+    width: 85.06vw !important;
+    height: 12.8vw !important;
+
+    h2 {
+      font-size: 3.23vw !important;
+      line-height: 4.82vw !important;
+    }
+
+    #increase-productivity-slider {
+      border-radius: 6.93vw !important;
+
+      &::before {
+        width: 39.06vw !important;
+        height: 12.02vw !important;
+        border-radius: 6.93vw !important;
+        left: 0.42vw !important;
+        bottom: 0.42vw !important;
+      }
+    }
+
+
+    #increase-productivity-checkbox:checked + #increase-productivity-slider::before {
+      transform: translateX(39.06vw);
+      width: 45.07vw !important;
+    }
+  }
+  #increase-productivity-section-chart-wrapper {
+    width: 100% !important;
+
+    #increase-productivity-section-chart-blocks-wrapper {
+      width: 100% !important;
+      transform: translateX(-85vw) !important;
+
+      .increase-productivity-section-chart-img {
+        width: 85.06vw !important;
+        border-radius: 2.7vw !important;
+      }
+
+      &.isToggled {
+        transform: translateX(0) !important;
+      }
+    }
+  }
+}
