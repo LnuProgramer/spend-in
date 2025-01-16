@@ -1,0 +1,80 @@
+@media (max-width: 768px) {
+  #what-they-say {
+    align-items: start;
+  }
+
+  #what-they-say-text-wrapper {
+    align-items: start;
+    text-align: start;
+    width: 100%;
+    gap: 3.2vw !important;
+
+    #what-they-say-medium-large-text-wrapper {
+      align-items: start;
+      gap: 2.4vw !important;
+
+      h1 {
+        font-size: 6.4vw !important;
+        line-height: 9.6vw !important;
+      }
+
+      h2 {
+        font-size: 3.2vw !important;
+        line-height: 4vw !important;
+      }
+    }
+
+    p {
+      font-size: 3.73vw !important;
+      line-height: 5.6vw !important;
+    }
+  }
+
+  #what-they-say-section-reviews-wrapper {
+    flex-direction: column;
+    width: 85vw !important;
+  }
+
+  .what-they-say-review-block-wrapper {
+    width: 72.2vw !important;
+    height: 80.53vw !important;
+    border-radius: 2.6vw !important;
+    padding: 6.4vw !important;
+
+    .what-they-say-review-block-text-wrapper {
+      height: 70% !important;
+      gap: 5.2vw !important;
+    }
+
+    h1, h2 {
+      font-size: 4.26vw !important;
+      line-height: 6.4vw !important;
+    }
+
+    h3 {
+      font-size: 3.73vw !important;
+      line-height: 5.6vw !important;
+    }
+
+    p {
+      font-size: 3.2vw !important;
+      line-height: 4.8vw !important;
+    }
+
+    .what-they-say-review-block-client-img {
+      width: 15.46vw !important;
+      border-radius: 3vw !important;
+    }
+
+    .what-they-say-review-block-client-text-wrapper {
+      gap: 1vw !important;
+    }
+  }
+
+  .what-they-say-review-block-wrapper:nth-child(4),
+  .what-they-say-review-block-wrapper:nth-child(5),
+  .what-they-say-review-block-wrapper:nth-child(6),
+  #what-they-say-section-button-wrapper {
+    display: none;
+  }
+}
